@@ -84,5 +84,5 @@ def matches_salary_range(job, salary):
 
 # req 9
 def filter_by_salary_range(jobs, salary):
-    
+
     return []
