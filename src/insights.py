@@ -58,11 +58,9 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    if not 'min_salary' in job or not 'max_salary' in job:
+    if 'min_salary' not in job or 'max_salary' not in job:
         raise ValueError
-    if not isinstance(salary, int):
-        raise ValueError
-    if not isinstance(job['min_salary'], int):
+    if not isinstance(salary, int) or not isinstance(job['min_salary'], int):
         raise ValueError
     if not isinstance(job['max_salary'], int):
         raise ValueError
