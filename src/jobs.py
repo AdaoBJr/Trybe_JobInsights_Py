@@ -1,5 +1,7 @@
 from functools import lru_cache
 
+# vamos começar com o código do trabalhogit 
+
 
 @lru_cache
 def read(path):
