@@ -41,6 +41,7 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
+    return []
 
 
 def get_unique_industries(path):
@@ -134,6 +135,7 @@ def get_min_salary(path):
                 result.append(int(job["min_salary"]))
 
     return min(result)
+
 
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
