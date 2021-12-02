@@ -1,19 +1,14 @@
+from src.jobs import read
+# https://csatlas.com/python-import-file-module/
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
+    all_jobs = read(path)
+    all_types = []
+    for types in all_jobs:
+        all_types.append(types["job_type"])
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    return list(set(all_types))
 
 
 def filter_by_job_type(jobs, job_type):
@@ -35,21 +30,13 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    all_jobs = read(path)
+    all_industries = []
+    for types in all_jobs:
+        if types["industry"] != '':
+            all_industries.append(types["industry"])
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return list(set(all_industries))
 
 
 def filter_by_industry(jobs, industry):
