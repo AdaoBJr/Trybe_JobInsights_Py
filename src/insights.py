@@ -77,21 +77,24 @@ def get_min_salary(path):
     return new_minsalary
 
 
-def matches_salary_range(job, salary):
-        if (
-            "min_salary" not in job
-            or "max_salary" not in job
-            or not isinstance(job["min_salary"], int) # um typeof do python
-            or not isinstance(job["max_salary"], int)
-            or job["min_salary"] > job["max_salary"]
-            or not isinstance(salary, int)
-        ):
-            raise ValueError("Um ou vários inputs estão errados")
+# um typeof do python
 
-        if job["min_salary"] <= salary <= job["max_salary"]:
-            return True
-        else:
-            return False
+
+def matches_salary_range(job, salary):
+    if (
+        "min_salary" not in job
+        or "max_salary" not in job
+        or not isinstance(job["min_salary"], int)
+        or not isinstance(job["max_salary"], int)
+        or job["min_salary"] > job["max_salary"]
+        or not isinstance(salary, int)
+    ):
+        raise ValueError("Um ou vários inputs estão errados")
+
+    if job["min_salary"] <= salary <= job["max_salary"]:
+        return True
+    else:
+        return False
 #agradecimentos ao rafael gumieri
 
 
