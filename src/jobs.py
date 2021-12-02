@@ -17,11 +17,11 @@ def read(path):
         List of rows as dicts
     """
     with open(path, encoding="utf8") as jobs_file:
-        jobs_list = csv.DictReader(jobs_file)
-        jobs = []
-        for job in jobs_list:
-            jobs.append(job)
-    return jobs
+        jobs = csv.DictReader(jobs_file)
+        jobs_list = []
+        for job in jobs:
+            jobs_list.append(job)
+    return jobs_list
 
 
 if __name__ == "__main__":
