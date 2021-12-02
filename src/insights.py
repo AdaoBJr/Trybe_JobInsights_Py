@@ -101,7 +101,18 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    """
+    Material consultado sobre isnumeric; dica Henrique Zózimo
+    https://docs.python.org/pt-br/3.8/library/stdtypes.html#str.isnumeric
+    https://www.w3schools.com/python/ref_string_isnumeric.asp
+    """
+    job_data = jobs.read(path)
+    maximum_salary = 0
+    for job in job_data:
+        if (job["max_salary"].isnumeric() and
+           int(job["max_salary"]) > maximum_salary):
+            maximum_salary = int(float(job["max_salary"]))
+    return maximum_salary
 
 
 def get_min_salary(path):
