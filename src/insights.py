@@ -161,14 +161,13 @@ def matches_salary_range(job, salary):
     min_salary = job.get("min_salary")
     max_salary = job.get("max_salary")
 
-    if min_salary is None or max_salary is None:
-        raise ValueError("Any empty field")
-    if not type(min_salary) is int or not type(max_salary) is int:
-        raise ValueError("Type must be integer")
-    if min_salary > max_salary:
-        raise ValueError("Max salary must be greater than min salary")
-    if not type(salary) == int:
-        raise ValueError("Salary type must be integer")
+    if (
+        (min_salary is None or max_salary is None)
+        and (not type(min_salary) is int or not type(max_salary) is int)
+        and (min_salary > max_salary)
+        and (not type(salary) == int)
+    ):
+        raise ValueError
 
     if min_salary <= salary <= max_salary:
         return True
@@ -193,16 +192,16 @@ def filter_by_salary_range(jobs, salary):
     """
     if not type(salary) is int:
         return []
-    
+
     salary_list = []
     for job in jobs:
         min_salary = job["min_salary"]
         max_salary = job["max_salary"]
         if (
-            type(min_salary) is int
-            and type(max_salary) is int
-            and max_salary > min_salary
-            and matches_salary_range(job, salary)
+            (type(min_salary) is int)
+            and (type(max_salary) is int)
+            and (max_salary > min_salary)
+            and (matches_salary_range(job, salary))
         ):
             salary_list.append(job)
     return salary_list
