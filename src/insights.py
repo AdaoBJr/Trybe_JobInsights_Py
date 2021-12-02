@@ -1,14 +1,18 @@
 from src.jobs import read
 
 
-def get_unique_job_types(path):
+def get_unique_by_column(path, column):
     all_jobs = read(path)
-    unique_job_types = set()
+    unique_by_column = set()
 
     for jobs in all_jobs:
-        unique_job_types.add(jobs['job_type'])
+        unique_by_column.add(jobs[column])
 
-    return list(unique_job_types)
+    return list(unique_by_column)
+
+
+def get_unique_job_types(path):
+    return get_unique_by_column(path, 'job_type')
 
 
 def filter_by_job_type(jobs, job_type):
