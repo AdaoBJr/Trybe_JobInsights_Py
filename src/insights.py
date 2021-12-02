@@ -10,11 +10,11 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    array_industries = set()
+    jobs_list = []
     for item in jobs:
-        if item.job_type == job_type:
-            array_industries.add(item.job_type)
-    return list(array_industries)
+        if (job_type == item["job_type"]):
+            jobs_list.append(item)
+    return jobs_list
 
 
 def get_unique_industries(path):
