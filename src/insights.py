@@ -1,14 +1,15 @@
-from jobs import read
+from .jobs import read
 
 
 def get_unique_job_types(path):
     file = read(path)
-    unique_jobs = set()
+    unique_job_type = set()
     for job in file:
-        unique_jobs.add(job['job_title'])
+        if job['job_type'] != '':
+            unique_job_type.add(job['job_type'])
 
     # https://www.geeksforgeeks.org/python-convert-set-into-a-list/
-    return list(unique_jobs)
+    return list(unique_job_type)
 
 
 def filter_by_job_type(jobs, job_type):
@@ -30,21 +31,13 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    file = read(path)
+    unique_industry = set()
+    for job in file:
+        if job['industry'] != '':
+            unique_industry.add(job['industry'])
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return list(unique_industry)
 
 
 def filter_by_industry(jobs, industry):
@@ -66,21 +59,17 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    file = read(path)
+    biggest_salary = 0
+    only_valid_salary = []
+    for job in file:
+        if job['max_salary'] != '' and job['max_salary'] != 'invalid':
+            only_valid_salary.append(job['max_salary'])
+    for salary in only_valid_salary:
+        salary_in_number = int(salary)
+        if salary_in_number > biggest_salary:
+            biggest_salary = int(salary)
+    return biggest_salary
 
 
 def get_min_salary(path):
