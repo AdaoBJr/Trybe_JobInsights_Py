@@ -85,5 +85,11 @@ def matches_salary_range(job, salary):
 
 # req 9
 def filter_by_salary_range(jobs, salary):
-
-    return []
+    filtered_salary_range = []
+    for job in jobs:
+        try:
+            if (matches_salary_range(job, salary)):
+                filtered_salary_range.append(job)
+        except Exception:
+            print("Invalid salary")
+    return filtered_salary_range
