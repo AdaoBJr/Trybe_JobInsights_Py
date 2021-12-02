@@ -43,6 +43,10 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
+    """
+    Material consultado sobre como verificar se um valor está na lista
+    https://stackoverflow.com/a/7571665
+    """
     filtered_jobs = [job
                      for job in jobs
                      if job["job_type"] in job_type]
