@@ -6,5 +6,11 @@ import csv
 def read(path):
     with open(path, 'r') as arquivo:
         arquivo_csv = csv.reader(arquivo, delimiter=',')
+        array = []
         for linha in arquivo_csv:
-            return linha
+            array.append(linha)
+        return array
+
+
+# if __name__ == '__main__':
+#     print(read('src/jobs.csv'))
