@@ -9,7 +9,7 @@ def get_unique_job_types(path):
         Must be passed to `read`
 
     Returns
-    -------
+    ------
     list
         List of unique job types
     """
