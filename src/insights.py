@@ -78,21 +78,16 @@ print(get_max_salary("src/jobs.csv"))
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    all_jobs = read(path)
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
+    # https://www.delftstack.com/pt/howto/python/get-index-of-min-and-max-value-from-list-in-python/
+    for job in all_jobs:
+        if job["min_salary"].isnumeric():
+            return min(job["min_salary"])
     pass
+
+
+print(get_min_salary("src/jobs.csv"))
 
 
 def matches_salary_range(job, salary):
