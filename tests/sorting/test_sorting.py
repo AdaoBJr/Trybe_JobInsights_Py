@@ -61,4 +61,4 @@ def test_sort_by_criteria():
     assert jobs == max_salary_order
 
     sort_by(jobs, "date_posted")
-    assert jobs == date_posted_orde
+    assert jobs == date_posted_order
