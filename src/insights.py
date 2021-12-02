@@ -30,21 +30,13 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    jobs_data = src.jobs.read(path)
+    response = []
+    for entry in jobs_data:
+        industry = entry['industry']
+        if industry != '' and industry not in response:
+            response.append(industry)
+    return response
 
 
 def filter_by_industry(jobs, industry):
@@ -66,39 +58,23 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    jobs_data = src.jobs.read(path)
+    response = 0
+    for entry in jobs_data:
+        salary = entry['max_salary']
+        if salary.isnumeric() and int(salary) > response:
+            response = int(salary)
+    return response
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    jobs_data = src.jobs.read(path)
+    response = 100000
+    for entry in jobs_data:
+        salary = entry['min_salary']
+        if salary.isnumeric() and int(salary) < response:
+            response = int(salary)
+    return response
 
 
 def matches_salary_range(job, salary):
@@ -144,5 +120,3 @@ def filter_by_salary_range(jobs, salary):
     """
     return []
 
-
-print(get_unique_job_types('src/jobs.csv'))
