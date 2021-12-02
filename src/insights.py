@@ -67,28 +67,22 @@ def get_min_salary(path):
 
 # req 8
 def matches_salary_range(job, salary):
-    try:
-        if (int(job["min_salary"]) > int(job["max_salary"])):
-            raise ValueError("Max_salary must be greater than min_salary")
-        return int(job["min_salary"]) <= salary <= int(job["max_salary"])
-    except Exception:
-        raise ValueError("Min and max must be int and must be in jobs")
+    if not ((
+        isinstance(job.get("min_salary"), int)
+        and isinstance(job.get("max_salary"), int))
+    ):
+        raise ValueError("Min and max must be int")
+    if not isinstance(salary, int):
+        raise ValueError("Invalid salary")
+    if ("min_salary" not in job and "max_salary" not in job):
+        raise ValueError("Min and max must be in jobs")
+    if job["min_salary"] > job["max_salary"]:
+        raise ValueError("Max_salary must be greater than min_salary")
+    salary_match = int(job["min_salary"]) <= salary <= int(job["max_salary"])
+    return salary_match
 
 
 # req 9
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
-
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
+    
     return []
