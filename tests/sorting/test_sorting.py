@@ -22,19 +22,19 @@ jobs = [
 sort_by_min_salary = [
     jobs[0],
     jobs[1],
-    jobs[2]
+    jobs[2],
 ]
 
 sort_by_max_salary = [
     jobs[0],
     jobs[2],
-    jobs[1]
+    jobs[1],
 ]
 
 sort_by_date_posted = [
     jobs[0],
     jobs[1],
-    jobs[2]
+    jobs[2],
 ]
 
 
