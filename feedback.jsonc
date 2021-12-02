@@ -1,12 +1,12 @@
 {
     // Coloque seu nome para sabermos de quem foi o comentário =D (opcional)
-    "nome": "",
+    "nome": "Antenor Neto",
     // Dê uma nota ao projeto *^* (int de 0 a 10) (obrigatório)
-    "nota": ,
+    "nota": 10,
     // O que você mais gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_positivos": "",
+    "pontos_positivos": "Adorei o projeto como um todo. Achei o nível bacana para um primeiro projeto. Sinto que se eu tivesse mais domínio da linguagem ele ficaria mais simples. Adorei o req bônus, deu pra ter um gostinho de Flask. E ter pelo menos um req de teste foi bom.",
     // O que você menos gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_negativos": "",
+    "pontos_negativos": "Não há",
     // Comentário livre sobre o que você achou do projeto (opcional)
-    "comentário": ""
+    "comentário": "Eu gostei muito dessa ideia do req bônus de 'olhe como a gente fez e faça também.' Foi divertido tentar entender, mas o readme entregou muito o ouro. Praticamente deu o passo a passo e isso tirou um pouco do desafio."
 }
