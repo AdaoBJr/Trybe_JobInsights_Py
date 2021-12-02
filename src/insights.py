@@ -116,7 +116,12 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    valid_salaries = [
+        int(item["min_salary"])
+        for item in read(path)
+        if re.search("[0-9]+", item["min_salary"]) is not None
+    ]
+    return min(valid_salaries)
 
 
 def matches_salary_range(job, salary):
