@@ -64,11 +64,15 @@ def get_max_salary(path):
 
 def get_min_salary(path):
     all_jobs = read(path)
+    min_salary = 90000
 
-    # https://www.delftstack.com/pt/howto/python/get-index-of-min-and-max-value-from-list-in-python/
     for job in all_jobs:
-        if job["min_salary"].isnumeric():
-            return min(job["min_salary"])
+        if (
+            job["min_salary"].isnumeric()
+            and int(job["min_salary"]) < min_salary
+        ):
+            min_salary = int(job["min_salary"])
+    return min_salary
     pass
 
 
