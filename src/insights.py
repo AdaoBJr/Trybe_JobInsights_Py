@@ -32,7 +32,6 @@ def get_max_salary(path):
     max_salary_jobs = 0
     for job in file:
         if len(job["max_salary"]) > 0 and job["max_salary"] != "invalid":
-            print(job["max_salary"], 'SALARIOS')
             if float(job["max_salary"]) > max_salary_jobs:
                 max_salary_jobs = int(job["max_salary"])
     return max_salary_jobs
@@ -40,7 +39,7 @@ def get_max_salary(path):
 
 def get_min_salary(path):
     file = read(path)
-    min_salary_jobs = 10000000000000
+    min_salary_jobs = 100000000000
     for job in file:
         if len(job["min_salary"]) > 0 and job["min_salary"] != "invalid":
             if float(job["min_salary"]) < min_salary_jobs:
