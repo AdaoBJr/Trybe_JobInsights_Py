@@ -83,6 +83,7 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
+    # https://docs.python.org/3/library/stdtypes.html#str.isnumeric
     """Get the maximum salary of all jobs
 
     Must call `read`
@@ -98,17 +99,18 @@ def get_max_salary(path):
         The maximum salary paid out of all job opportunities
     """
     read_file = read(path)
-    max_salary = []
+    max_salary = 0
     for job in read_file:
-        if job["max_salary"] != "":
-            try:
-                max_salary.append(int(job["max_salary"]))
-            except ValueError:
-                pass
-    return max(max_salary)
+        if (
+            job["max_salary"].isnumeric()
+            and int(job["max_salary"]) > max_salary
+        ):
+            max_salary = int(job["max_salary"])
+    return max_salary
 
 
 def get_min_salary(path):
+    # Ideia dada pelo Arlen - outra forma de fazer
     """Get the minimum salary of all jobs
 
     Must call `read`
