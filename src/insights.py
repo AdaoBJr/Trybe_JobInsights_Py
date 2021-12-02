@@ -49,11 +49,15 @@ def filter_by_industry(jobs, industry):
 
 def get_max_salary(path):
     all_jobs = read(path)
+    max_salary = 0
 
-    # https://www.delftstack.com/pt/howto/python/python-max-value-in-list/
     for job in all_jobs:
-        if job["max_salary"].isnumeric():
-            return max(job["max_salary"])
+        if (
+            job["max_salary"].isnumeric()
+            and int(job["max_salary"]) > max_salary
+        ):
+            max_salary = int(job["max_salary"])
+    return max_salary
 
     pass
 
