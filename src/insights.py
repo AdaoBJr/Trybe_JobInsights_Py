@@ -14,7 +14,7 @@ def get_unique_job_types(path):
     Returns
     -------
     list
-        List of unique job typesg
+        List of unique job types
     """
     unique_job = set()
     jobs = read(path)
