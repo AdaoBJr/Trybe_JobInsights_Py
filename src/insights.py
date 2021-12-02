@@ -52,7 +52,9 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    return list(
+        {item["industry"] for item in read(path) if item["industry"] not in ""}
+    )
 
 
 def filter_by_industry(jobs, industry):
