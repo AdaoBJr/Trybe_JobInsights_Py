@@ -15,14 +15,22 @@ def get_unique_by_column(path, column):
     return list(unique_by_column)
 
 
+def filter_by_column(jobs, filter, column_name):
+    return [
+        job for job in jobs if filter == job[column_name]
+    ]
+
+
 def get_unique_job_types(path):
     return get_unique_by_column(path, 'job_type')
 
 
 def filter_by_job_type(jobs, job_type):
-    return [
-        job for job in jobs if job_type == job['job_type']
-    ]
+
+    # https://stackoverflow.com/questions/18425225/getting-the-name-of-a-variable-as-a-string
+    column_name = f'{job_type=}'.split('=')[0]
+
+    return filter_by_column(jobs, job_type, column_name)
 
 
 def get_unique_industries(path):
@@ -30,21 +38,8 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    column_name = f'{industry=}'.split('=')[0]
+    return filter_by_column(jobs, industry, column_name)
 
 
 def get_max_salary(path):
