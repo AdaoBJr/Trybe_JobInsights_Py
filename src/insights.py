@@ -58,7 +58,13 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    unique_industry = set()
+    jobs = read(path)
+    for job in jobs:
+        if not job["industry"] == "":
+            unique_industry.add(job["industry"])
+    list_of_industries = list(unique_industry)
+    return list_of_industries
 
 
 def filter_by_industry(jobs, industry):
@@ -160,4 +166,5 @@ def filter_by_salary_range(jobs, salary):
 
 
 if __name__ == "__main__":
-    print(get_unique_job_types("jobs.csv"))
+    print(get_unique_job_types("src/jobs.csv"))
+    print(get_unique_industries("src/jobs.csv"))
