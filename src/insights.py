@@ -64,23 +64,27 @@ def get_min_salary(path):
     return lowest_salary
 
 
-def matches_salary_range(job, salary):
-    if "max_salary" not in job or "min_salary" not in job:
-        raise ValueError(
-            'job["min_salary"] or job["max_salary"] doesn\'t exists'
-        )
+def is_int(job, salary):
     if not isinstance(job["max_salary"], int) or not isinstance(
         job["min_salary"], int
     ):
         raise ValueError(
             'job["min_salary"] or job["max_salary"] aren\'t valid integers'
         )
+    if not isinstance(salary, int):
+        raise ValueError("salary isn't a valid integer")
+
+
+def matches_salary_range(job, salary):
+    if "max_salary" not in job or "min_salary" not in job:
+        raise ValueError(
+            'job["min_salary"] or job["max_salary"] doesn\'t exists'
+        )
+    is_int(job, salary)
     if job["min_salary"] > job["max_salary"]:
         raise ValueError(
             'job["min_salary"] is greather than job["max_salary"]'
         )
-    if not isinstance(salary, int):
-        raise ValueError('salary isn\'t a valid integer')
     if job["max_salary"] >= salary >= job["min_salary"]:
         return True
     return False
@@ -99,11 +103,14 @@ def filter_by_salary_range(jobs, salary):
     return filter_matches
 
 
-filter_by_salary_range([
+filter_by_salary_range(
+    [
         {"max_salary": 0, "min_salary": 10},
         {"max_salary": 10, "min_salary": 100},
         {"max_salary": 10000, "min_salary": 200},
         {"max_salary": 15000, "min_salary": 0},
         {"max_salary": 1500, "min_salary": 0},
         {"max_salary": -1, "min_salary": 10},
-    ], 0)
+    ],
+    0,
+)
