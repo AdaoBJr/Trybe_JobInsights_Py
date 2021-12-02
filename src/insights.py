@@ -40,7 +40,7 @@ def filter_by_industry(jobs, industry):
     industry : str
         Industry for the list filter
 
-    Returns
+    Return
     -------
     list
         List of jobs with provided industry
