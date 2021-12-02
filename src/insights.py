@@ -1,3 +1,4 @@
+# from jobs import read
 from src.jobs import read
 
 
@@ -5,8 +6,9 @@ def get_unique_by_column(path, column):
     all_jobs = read(path)
     unique_by_column = set()
 
-    for jobs in all_jobs:
-        unique_by_column.add(jobs[column])
+    for job in all_jobs:
+        if not job[column] == '':
+            unique_by_column.add(job[column])
 
     return list(unique_by_column)
 
@@ -34,21 +36,7 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return get_unique_by_column(path, 'industry')
 
 
 def filter_by_industry(jobs, industry):
@@ -150,4 +138,5 @@ def filter_by_salary_range(jobs, salary):
 
 
 if __name__ == '__main__':
-    print(get_unique_job_types('jobs.csv'))
+    # print(get_unique_job_types('jobs.csv'))
+    print(get_unique_industries('jobs.csv'))
