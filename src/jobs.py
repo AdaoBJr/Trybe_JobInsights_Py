@@ -10,9 +10,3 @@ def read(path):
         for item in read_file:
             list_dict.append(item)
     return list_dict
-
-
-# teste
-# if __name__ == "__main__":
-#     teste = read("src/jobs.csv")
-#     print(teste)
