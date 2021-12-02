@@ -59,9 +59,11 @@ def get_max_salary(path):
     max_salary = []
     new_maxsalary = 0
     for item in result:
-        if ("max_salary" in item 
-        and item["max_salary"] != '' 
-        and item["max_salary"] != "invalid"):
+        if (
+            "max_salary" in item
+            and item["max_salary"] != ''
+            and item["max_salary"] != "invalid"
+        ):
             max_salary.append(item)
     for item2 in max_salary:
         if int(item2["max_salary"]) > new_maxsalary:
@@ -74,7 +76,11 @@ def get_min_salary(path):
     minimal_salary = []
     new_minsalary = 10000000000
     for item in result:
-        if "min_salary" in item and item["min_salary"] != '' and item["min_salary"] != "invalid":
+        if (
+            "min_salary" in item
+            and item["min_salary"] != ''
+            and item["min_salary"] != "invalid"
+        ):
             minimal_salary.append(item)
     for item2 in minimal_salary:
         if int(item2["min_salary"]) < new_minsalary:
