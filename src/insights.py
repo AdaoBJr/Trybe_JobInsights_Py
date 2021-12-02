@@ -21,7 +21,7 @@ def filter_by_job_type(jobs, job_type):
 
     Returns
     -------
-    list
+    listt
         List of jobs with provided job_type
     """
     return []
