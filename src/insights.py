@@ -99,7 +99,14 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    data = read(path)
+    maximum = []
+    for max_sal in data:
+        if max_sal["max_salary"] != '' and max_sal["max_salary"] != 'invalid':
+            salary = max_sal["max_salary"]
+            maximum.append(int(salary))
+    maximum.sort()
+    return maximum[len(maximum) - 1]
 
 
 def get_min_salary(path):
