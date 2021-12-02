@@ -43,6 +43,12 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
+    new_data = src.jobs.read(path)
+    list_unique_industries = set()
+    for industry in new_data:
+        if industry['industry'] != "":
+            list_unique_industries.add(industry['industry'])
+    return list_unique_industries
     """Checks all different industries and returns a list of them
 
     Must call `read`
