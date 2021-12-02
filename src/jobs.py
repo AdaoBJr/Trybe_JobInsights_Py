@@ -9,5 +9,4 @@ def read(path):
         result = csv.DictReader(file, delimiter=',', quotechar='"')
         for item in result:
             dicionario.append(item)
-        print(dicionario)
         return dicionario

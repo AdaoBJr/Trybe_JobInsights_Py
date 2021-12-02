@@ -1,4 +1,4 @@
-from jobs import read
+from src.jobs import read
 
 
 def get_unique_job_types(path):
@@ -6,28 +6,19 @@ def get_unique_job_types(path):
     array_jobs = set()
     for item in result:
         array_jobs.add(item['job_type'])
-    return array_jobs
+    return list(array_jobs)
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    array_industries = set()
+    for item in jobs:
+        if item.job_type == job_type:
+            array_industries.add(item.job_type)
+    return list(array_industries)
 
 
 def get_unique_industries(path):
+    
     """Checks all different industries and returns a list of them
 
     Must call `read`
@@ -64,21 +55,16 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    result = read(path)
+    max_salary = []
+    new_maxsalary = 0
+    for item in result:
+        if "max_salary" in item and item["max_salary"] != '' and item["max_salary"] != "invalid":
+            max_salary.append(item)
+    for item2 in max_salary:
+        if int(item2["max_salary"]) > new_maxsalary:
+            new_maxsalary = int(item2["max_salary"])
+    return new_maxsalary
 
 
 def get_min_salary(path):
