@@ -59,7 +59,8 @@ def get_unique_industries(path):
     get_jobs = read(path)
     industries = set()
     for job in get_jobs:
-        industries.add(job["industry"])
+        if job["industry"] != "":
+            industries.add(job["industry"])
     return industries
 
 
@@ -96,7 +97,12 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    get_jobs = read(path)
+    industries = []
+    for job in get_jobs:
+        if job["max_salary"] != "":
+            industries.append(job["max_salary"])
+    return max(industries)
 
 
 def get_min_salary(path):
@@ -114,7 +120,12 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    get_jobs = read(path)
+    industries = []
+    for job in get_jobs:
+        if job["min_salary"] != "":
+            industries.append(job["min_salary"])
+    return min(industries)
 
 
 def matches_salary_range(job, salary):
