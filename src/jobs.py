@@ -26,4 +26,3 @@ def read(path):
                 job[header[i]] = entry[i]
             response.append(job)
     return response
-
