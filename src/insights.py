@@ -90,7 +90,14 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    """
+    Material consultado sobre como verificar se um valor está na lista
+    https://stackoverflow.com/a/7571665
+    """
+    filtered_jobs = [job
+                     for job in jobs
+                     if job["industry"] in industry]
+    return filtered_jobs
 
 
 def get_max_salary(path):
