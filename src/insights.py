@@ -74,7 +74,6 @@ def get_min_salary(path):
     min_salary = min(all_unique_salary, key=int)
 
     return int(min_salary)
-    pass
 
 
 def matches_salary_range(job, salary):
