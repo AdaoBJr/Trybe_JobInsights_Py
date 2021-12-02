@@ -1,3 +1,6 @@
+from src import jobs
+
+
 def get_unique_job_types(path):
     """Checks all different job types and returns a list of them
 
@@ -13,7 +16,16 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    return []
+    """
+    Material consultado sobre converter set para list
+    https://favtutor.com/blogs/set-to-list-python
+    https://www.geeksforgeeks.org/python-convert-set-into-a-list/
+    """
+    job_data = jobs.read(path)
+    job_type_set = set()
+    for job in job_data:
+        job_type_set.add(job["job_type"])
+    return sorted(job_type_set)
 
 
 def filter_by_job_type(jobs, job_type):
