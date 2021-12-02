@@ -64,21 +64,15 @@ def get_max_salary(path):
 
 # req 5
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    all_salary = jobs.read(path)
+    min_salary = []
+    for job in all_salary:
+        if job["min_salary"] not in min_salary and job["min_salary"] != '':
+            try:
+                min_salary.append(int(job["min_salary"]))
+            except ValueError:
+                print("Invalid")
+    return min(min_salary)
 
 
 # req 8
