@@ -11,7 +11,8 @@ def read(path):
             list_dict.append(item)
     return list_dict
 
-#teste
+
+# teste
 # if __name__ == "__main__":
 #     teste = read("src/jobs.csv")
 #     print(teste)
