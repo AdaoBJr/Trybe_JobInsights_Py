@@ -1,6 +1,7 @@
 from src import jobs
 
 
+# req 2
 def get_unique_job_types(path):
     all_jobs = jobs.read(path)
     unique_jobs = []
@@ -10,6 +11,7 @@ def get_unique_job_types(path):
     return unique_jobs
 
 
+# req 6
 def filter_by_job_type(jobs, job_type):
     filter_jobs = []
     for job in jobs:
@@ -18,6 +20,7 @@ def filter_by_job_type(jobs, job_type):
     return filter_jobs
 
 
+# req 3
 def get_unique_industries(path):
     all_jobs = jobs.read(path)
     unique_industries = []
@@ -27,6 +30,7 @@ def get_unique_industries(path):
     return unique_industries
 
 
+# req 7
 def filter_by_industry(jobs, industry):
     """Filters a list of jobs by industry
 
@@ -45,6 +49,7 @@ def filter_by_industry(jobs, industry):
     return []
 
 
+# req 4
 def get_max_salary(path):
     all_salary = jobs.read(path)
     max_salary = []
@@ -57,6 +62,7 @@ def get_max_salary(path):
     return max(max_salary)
 
 
+# req 5
 def get_min_salary(path):
     """Get the minimum salary of all jobs
 
@@ -75,6 +81,7 @@ def get_min_salary(path):
     pass
 
 
+# req 8
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
@@ -101,6 +108,7 @@ def matches_salary_range(job, salary):
     pass
 
 
+# req 9
 def filter_by_salary_range(jobs, salary):
     """Filters a list of jobs by salary range
 
