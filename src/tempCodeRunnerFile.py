@@ -1,1 +1,1 @@
-read("src/jobs.csv")
+set(row["job_title"])
