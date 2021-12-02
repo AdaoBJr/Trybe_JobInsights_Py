@@ -1,7 +1,5 @@
 from src.jobs import read
 
-# from jobs import read
-
 
 def get_unique_job_types(path):
     """Checks all different job types and returns a list of them
@@ -163,9 +161,9 @@ def matches_salary_range(job, salary):
 
     if (
         (min_salary is None or max_salary is None)
-        and (not type(min_salary) is int or not type(max_salary) is int)
-        and (min_salary > max_salary)
-        and (not type(salary) == int)
+        or (not type(min_salary) is int or not type(max_salary) is int)
+        or (min_salary > max_salary)
+        or (not type(salary) == int)
     ):
         raise ValueError
 
