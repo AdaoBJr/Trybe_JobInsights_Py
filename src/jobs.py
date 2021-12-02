@@ -8,4 +8,4 @@ def read(path):
         return list(csv.DictReader(file))
 
 
-print(read("jobs.csv"))
+print(read("src/jobs.csv"))
