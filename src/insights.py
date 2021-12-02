@@ -1,5 +1,7 @@
 import csv
 
+# REFATORAR TODOS: Tentar resolver usando list/dict comprehension
+
 
 def get_unique_job_types(path):
     result = []
@@ -30,21 +32,14 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    result = []
+    with open(path) as file:
+        content = csv.DictReader(file, delimiter=",", quotechar='"')
+        for val in content:
+            if(val['industry'] != ''):
+                result.append(val['industry'])
+    my_set = set(result)
+    return list(my_set)
 
 
 def filter_by_industry(jobs, industry):
