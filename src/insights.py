@@ -67,6 +67,7 @@ def get_min_salary(path):
 
 # req 8
 def matches_salary_range(job, salary):
+    # https://www.programiz.com/python-programming/methods/built-in/isinstance
     if not ((
         isinstance(job.get("min_salary"), int)
         and isinstance(job.get("max_salary"), int))
