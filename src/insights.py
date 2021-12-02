@@ -61,7 +61,11 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    job_data = jobs.read(path)
+    industries_set = {job["industry"]
+                      for job in job_data
+                      if job["industry"] != ""}
+    return sorted(industries_set)
 
 
 def filter_by_industry(jobs, industry):
