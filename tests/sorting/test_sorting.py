@@ -37,6 +37,7 @@ sort_by_date_posted = [
     jobs[2]
 ]
 
+
 def test_sort_by_criteria():
     sort_by(jobs, "min_salary")
     assert jobs == sort_by_min_salary
