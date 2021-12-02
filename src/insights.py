@@ -130,7 +130,17 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    """
+    Material consultado sobre o máximo inteiro no Python
+    https://www.delftstack.com/howto/python/python-max-int/
+    """
+    job_data = jobs.read(path)
+    minimum_salary = 2 ** 31 - 1
+    for job in job_data:
+        if (job["min_salary"].isnumeric() and
+           int(job["min_salary"]) < minimum_salary):
+            minimum_salary = int(float(job["min_salary"]))
+    return minimum_salary
 
 
 def matches_salary_range(job, salary):
