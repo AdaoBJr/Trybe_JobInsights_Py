@@ -3,10 +3,10 @@ from src.jobs import read
 
 def get_unique_job_types(path):
     content_list = read(path)
-    job_types = []
+    job_types = set()
     for job in content_list:
-        job_types.append(job["job_type"])
-    return set(job_types)
+        job_types.add(job["job_type"])
+    return job_types
 
 
 def filter_by_job_type(jobs, job_type):
