@@ -1,4 +1,5 @@
 from src.sorting import sort_by
+import pytest
 
 jobs_list = [
     {"min_salary": 2000, "max_salary": 6000, "date_posted": "2020-0101"},
@@ -23,3 +24,10 @@ def test_sort_by_criteria():
     assert sort_by(jobs_list, "min_salary") == jobs_list_min
     assert sort_by(jobs_list, "max_salary") == jobs_list_max_and_date
     assert sort_by(jobs_list, "date_posted") == jobs_list_max_and_date
+
+    with pytest.raises(ValueError, match="invalid sorting criteria: teste"):
+        sort_by(jobs_list, "teste")
+
+
+# agradecimentos ao pedro
+# pr: https://github.com/tryber/sd-010-b-project-job-insights/pull/19
