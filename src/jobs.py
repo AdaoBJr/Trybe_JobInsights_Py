@@ -6,6 +6,3 @@ import csv
 def read(path):
     with open(path) as file:
         return list(csv.DictReader(file))
-
-
-print(read("src/jobs.csv"))
