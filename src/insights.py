@@ -1,19 +1,12 @@
+from src.jobs import read
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    dictJobs = read(path)
+    types = set()
+    for row in dictJobs:
+        types.add(row["job_type"])
+    return types
 
 
 def filter_by_job_type(jobs, job_type):
@@ -35,21 +28,12 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    dictJobs = read(path)
+    industries = set()
+    for row in dictJobs:
+        if row["industry"]:
+            industries.add(row["industry"])
+    return industries
 
 
 def filter_by_industry(jobs, industry):
@@ -71,39 +55,25 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    dictJobs = read(path)
+    listSalary = []
+    for row in dictJobs:
+        if row["max_salary"].isnumeric():
+            listSalary.append(int(row["max_salary"]))
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    result = max(listSalary)
+    return result
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    dictJobs = read(path)
+    listSalary = []
+    for row in dictJobs:
+        if row["min_salary"].isnumeric():
+            listSalary.append(int(row["min_salary"]))
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    result = min(listSalary)
+    return result
 
 
 def matches_salary_range(job, salary):
