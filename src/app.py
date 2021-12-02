@@ -1,8 +1,6 @@
 from flask import Flask
 from . import routes_and_views
 
-# comment to commit and creates a pull request
-
 
 def create_app() -> Flask:
     app = Flask(__name__)
