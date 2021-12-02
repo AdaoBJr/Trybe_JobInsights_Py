@@ -41,6 +41,12 @@ def get_unique_industries(path):
     -------
     list
         List of unique industries
+
+        array_of_jobs = read(path)
+    industries = set()
+    for item in array_of_jobs:
+        industries.add(item['industries'])
+    return industries
     """
     return []
 
