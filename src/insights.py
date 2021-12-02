@@ -1,19 +1,14 @@
+import csv
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    result = []
+    with open(path) as file:
+        content = csv.DictReader(file, delimiter=",", quotechar='"')
+        for row in content:
+            result.append(row['job_type'])
+    my_set = set(result)
+    return list(my_set)
 
 
 def filter_by_job_type(jobs, job_type):
