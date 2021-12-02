@@ -1,3 +1,5 @@
+import re
+
 from src.jobs import read
 
 
@@ -90,7 +92,13 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    # https://www.w3schools.com/python/python_regex.asp#matchobject
+    valid_salaries = [
+        int(item["max_salary"])
+        for item in read(path)
+        if re.search("[0-9]+", item["max_salary"]) is not None
+    ]
+    return max(valid_salaries)
 
 
 def get_min_salary(path):
