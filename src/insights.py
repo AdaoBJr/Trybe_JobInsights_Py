@@ -107,7 +107,6 @@ def filter_by_salary_range(jobs, salary):
         The jobs to be filtered
     salary : int
         The salary to be used as filter
-
     Returns
     -------
     list
