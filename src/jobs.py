@@ -4,22 +4,10 @@ import csv
 
 @lru_cache
 def read(path):
-    with open(f"{path}", "r") as fileRead:
-        file = csv.reader(fileRead, delimiter=",", quotechar='""')
-        header, *data = file
+    with open(path, mode="r") as fileRead:
+        file = csv.DictReader(fileRead)
+        lista = []
+        for row in file:
+            lista.append(row)
 
-    print(header)
-
-    # """Reads a file from a given path and returns its contents
-
-    # Parameters
-    # ----------
-    # path : str
-    #     Full path to file
-
-    # Returns
-    # -------
-    # list
-    #     List of rows as dicts
-    # """
-    return []
+    return lista
