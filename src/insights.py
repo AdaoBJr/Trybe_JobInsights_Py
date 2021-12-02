@@ -68,9 +68,6 @@ def get_unique_industries(path):
     return result
 
 
-get_unique_industries('src/jobs.csv')
-
-
 def filter_by_industry(jobs, industry):
     """Filters a list of jobs by industry
 
@@ -104,7 +101,14 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    with open(path) as file:
+        result = []
+        jobs = csv.DictReader(file)
+        for job in jobs:
+            if len(job["max_salary"]) > 0 and job["max_salary"] != 'invalid':
+                result.append(int(job["max_salary"]))
+
+    return max(result)
 
 
 def get_min_salary(path):
