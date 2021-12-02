@@ -41,7 +41,6 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
 
 
 def get_unique_industries(path):
@@ -59,7 +58,17 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    with open(path) as file:
+        result = set()
+        jobs = csv.DictReader(file)
+        for job in jobs:
+            if len(job["industry"]) > 0:
+                result.add(job["industry"])
+
+    return result
+
+
+get_unique_industries('src/jobs.csv')
 
 
 def filter_by_industry(jobs, industry):
