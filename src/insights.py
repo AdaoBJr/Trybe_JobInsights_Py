@@ -1,15 +1,12 @@
 from jobs import read
 
+
 def get_unique_job_types(path):
     result = read(path)
     array_jobs = set()
     for item in result:
         array_jobs.add(item['job_type'])
     return array_jobs
-
-
-if __name__ == "__main__":
-    print(get_unique_job_types("src/jobs.csv"))
 
 
 def filter_by_job_type(jobs, job_type):
