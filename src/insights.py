@@ -126,8 +126,14 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    with open(path) as file:
+        result = []
+        jobs = csv.DictReader(file)
+        for job in jobs:
+            if len(job["min_salary"]) > 0 and job["min_salary"] != 'invalid':
+                result.append(int(job["min_salary"]))
 
+    return min(result)
 
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
