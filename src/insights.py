@@ -60,7 +60,6 @@ def filter_by_industry(jobs, industry):
 def get_max_salary(path):
     all_unique_salary = get_unique_by_column(path, 'max_salary')
 
-# source:
 # https://pt.stackoverflow.com/questions/257905/retornando-somente-o-maior-valor-de-uma-lista-python
     max_salary = max(all_unique_salary, key=int)
 
