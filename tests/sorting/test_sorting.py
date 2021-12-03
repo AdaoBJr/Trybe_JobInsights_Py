@@ -7,4 +7,3 @@ def test_sort_by_criteria():
         sort_by([{}, {}], 'xablau')
 
     sort_by([{}, {}], 'max_salary')
-    
