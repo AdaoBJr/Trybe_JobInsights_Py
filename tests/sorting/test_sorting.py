@@ -43,6 +43,9 @@ job_with_list_values = [
 
 
 def test_sort_by():
+    assert sort_by(job_list, 'max_salary') == job_list_ordened_by_max_salary
+    assert sort_by(job_list, 'min_salary') == job_list_ordened_by_min_salary
+    assert sort_by(job_list, 'date_posted') == job_list_ordened_by_posted_date
     with pytest.raises(ValueError):
         sort_by([], 'invalid_criteira')
     with pytest.raises(ValueError):
@@ -57,6 +60,3 @@ def test_sort_by():
         sort_by(job_with_invalid_str_values, 'date_posted')
     with pytest.raises(NameError):
         sort_by(job_with_list_values, 'date_posted')
-    assert sort_by(job_list, 'max_salary') == job_list_ordened_by_max_salary
-    assert sort_by(job_list, 'min_salary') == job_list_ordened_by_min_salary
-    assert sort_by(job_list, 'date_posted') == job_list_ordened_by_posted_date
