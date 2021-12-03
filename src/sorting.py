@@ -94,3 +94,16 @@ def sort_by(jobs, criteria):
     reverse = criteria in ["max_salary", "date_posted"]
 
     jobs.sort(key=key, reverse=reverse)
+    return jobs
+
+
+if __name__ == "__main__":
+    jobs = [
+        {"max_salary": 0, "min_salary": 10, "date_posted": 2015},
+        {"max_salary": 10, "min_salary": 100, "date_posted": 2021},
+        {"max_salary": 10000, "min_salary": 200, "date_posted": 2019},
+        {"max_salary": 15000, "min_salary": 0, "date_posted": 2020},
+        {"max_salary": 1500, "min_salary": 0, "date_posted": 2020},
+        {"max_salary": -1, "min_salary": 10, "date_posted": 2021},
+    ]
+    print(sort_by(jobs, "date_posted"))
