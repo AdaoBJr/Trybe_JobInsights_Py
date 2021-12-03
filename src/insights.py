@@ -159,7 +159,7 @@ def matches_salary_range(job, salary):
 
     max_salary, min_salary = job.values()
 
-    if min_salary > max_salary or re.search("[0-9]+", str(salary)) is None:
+    if min_salary > max_salary or type(salary) is not int:
         raise ValueError
     return min_salary <= salary <= max_salary
 
