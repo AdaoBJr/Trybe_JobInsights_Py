@@ -5,4 +5,7 @@ import csv
 @lru_cache
 def read(path):
     with open(path) as file:
-        return list(csv.DictReader(file))
+        return [
+            {key: value for key, value in row.items()}
+            for row in csv.DictReader(file)
+        ]
