@@ -133,7 +133,7 @@ def get_min_salary(path):
     min_salary = []
     for rows in list:
         if rows["min_salary"] != "invalid" and rows["min_salary"].isnumeric():
-            min_salary.append(int(rows["max_salary"]))
+            min_salary.append(int(rows["min_salary"]))
     return min(min_salary)
 
 
