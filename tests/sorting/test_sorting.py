@@ -1,5 +1,8 @@
-# from src.sorting import sort_by
+from src.sorting import sort_by
 
 
 def test_sort_by_criteria():
-    pass
+    assert sort_by([
+                        {"job_title": "Engenheiro"},
+                        {"job_title": "Desenvolvedor"}
+                    ], "min_salary") is None
