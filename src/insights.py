@@ -4,10 +4,10 @@ from src import jobs
 
 
 def get_unique_job_types(path):
-    consoles = set()
+    job_set = set()
     jobs_read = jobs.read(path)
     for job in jobs_read:
-        consoles.add(job["job_type"])
+        job_set.add(job["job_type"])
     """Checks all different job types and returns a list of them
 
     Must call `read`
@@ -22,14 +22,13 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    return consoles
+    return job_set
 
 
 # print(get_unique_job_types("jobs.csv"))
 
 
 def filter_by_job_type(jobs, job_type):
-    print(jobs)
     filtered_jobs = [
         job
         for job in jobs
@@ -56,12 +55,12 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    consoles = set()
+    job_set = set()
     jobs_read = jobs.read(path)
     for job in jobs_read:
         if job["industry"]:
             print(job["industry"])
-            consoles.add(job["industry"])
+            job_set.add(job["industry"])
     """Checks all different industries and returns a list of them
 
     Must call `read`
@@ -76,13 +75,18 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return consoles
+    return job_set
 
 
 # print(get_unique_industries("jobs.csv"))
 
 
 def filter_by_industry(jobs, industry):
+    filtered_jobs = [
+        job
+        for job in jobs
+        if job['industry'] == industry
+        ]
     """Filters a list of jobs by industry
 
     Parameters
@@ -97,16 +101,16 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    return filtered_jobs
 
 
 def get_max_salary(path):
-    consoles = set()
+    job_set = set()
     jobs_read = jobs.read(path)
     for job in jobs_read:
         if job["max_salary"].isnumeric():
-            consoles.add(int(job["max_salary"]))
-    return max(consoles)
+            job_set.add(int(job["max_salary"]))
+    return max(job_set)
     """Get the maximum salary of all jobs
 
     Must call `read`
@@ -128,12 +132,12 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    consoles = set()
+    job_set = set()
     jobs_read = jobs.read(path)
     for job in jobs_read:
         if job["min_salary"].isnumeric():
-            consoles.add(int(job["min_salary"]))
-    return min(consoles)
+            job_set.add(int(job["min_salary"]))
+    return min(job_set)
     """Get the minimum salary of all jobs
 
     Must call `read`
