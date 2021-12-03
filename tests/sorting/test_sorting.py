@@ -31,7 +31,7 @@ def test_sort_by_criteria():
         {"min_salary": 2000, "max_salary": 3500, "date_posted": "2020-05-07"},
     ]
 
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="invalid sorting criteria: batata"):
         sort_by(jobs, invalid_criteria)
 
     pass
