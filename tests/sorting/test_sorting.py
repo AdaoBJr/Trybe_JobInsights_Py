@@ -3,8 +3,8 @@ import pytest
 
 
 def test_sort_by_criteria():
-    with pytest.raises(TypeError):
-        sort_by('xablau')
+    with pytest.raises(ValueError, match="invalid sorting criteria: xablau"):
+        sort_by([{}, {}], 'xablau')
 
-    with pytest.raises(AttributeError):
-        sort_by('xablau', 'max_salary')
+    sort_by([{}, {}], 'max_salary')
+    
