@@ -38,7 +38,8 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    filter_job_types = [job for job in jobs if job['job_type'] == job_type]
+    return filter_job_types
 
 
 def get_unique_industries(path):
@@ -79,7 +80,8 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    filter_industries = [job for job in jobs if job['industry'] == industry]
+    return filter_industries
 
 
 def get_max_salary(path):
@@ -100,9 +102,14 @@ def get_max_salary(path):
     jobs_reader = jobs.read(path)
     max_salary = 0
     for job in jobs_reader:
-        if job['max_salary'].isnumeric() and int(job['max_salary']) > max_salary and job['min_salary'] != '':
+        if (
+            job['max_salary'].isnumeric()
+            and int(job['max_salary']) > max_salary
+            and job['min_salary'] != ''
+        ):
             max_salary = int(job['max_salary'])
     return max_salary
+
 
 def get_min_salary(path):
     """Get the minimum salary of all jobs
@@ -122,7 +129,11 @@ def get_min_salary(path):
     jobs_reader = jobs.read(path)
     min_salary = 9 ** 9
     for job in jobs_reader:
-        if job['min_salary'].isnumeric() and int(job['min_salary']) < min_salary and job['min_salary'] != '':
+        if (
+            job['min_salary'].isnumeric()
+            and int(job['min_salary']) < min_salary
+            and job['min_salary'] != ''
+        ):
             min_salary = int(job['min_salary'])
     return min_salary
 
@@ -150,7 +161,16 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    if (
+        'min_salary' not in job
+        or 'max_salary' not in job
+        or type(job['min_salary']) != int
+        or type(job['max_salary']) != int
+        or job['min_salary'] > job['max_salary']
+        or type(salary) != int
+    ):
+        raise ValueError
+    return job['min_salary'] <= salary <= job['max_salary']
 
 
 def filter_by_salary_range(jobs, salary):
@@ -168,4 +188,11 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    filter_salary = []
+    for job in jobs:
+        try:
+            if(matches_salary_range(job, salary)):
+                filter_salary.append(job)
+        except ValueError:
+            pass
+    return filter_salary
