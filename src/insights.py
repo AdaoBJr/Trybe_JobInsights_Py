@@ -104,7 +104,15 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    list_jobs = read(path)
+    list_salaries = []  # cria a várial como um conjunto
+    # list_types_jobs = []
+
+    for job in list_jobs:
+        if (job["max_salary"] != '' and job["max_salary"] != 'invalid'):
+            list_salaries.append(int(job["max_salary"]))
+
+    return max(list_salaries)
 
 
 def get_min_salary(path):
