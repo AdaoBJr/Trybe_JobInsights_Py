@@ -1,4 +1,5 @@
 from src.jobs import read
+# from jobs import read
 
 
 def get_unique_job_types(path):
@@ -18,7 +19,7 @@ def get_unique_job_types(path):
     """
 
     list_jobs = read(path)
-    list_types_jobs = set()
+    list_types_jobs = set()  # cria a várial como um conjunto
     # list_types_jobs = []
 
     for job in list_jobs:
@@ -42,7 +43,6 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
 
 
 def get_unique_industries(path):
@@ -60,7 +60,15 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    list_jobs = read(path)
+    list_types_industries = set()  # cria a várial como um conjunto
+    # list_types_jobs = []
+
+    for job in list_jobs:
+        if (job["industry"] != ''):
+            list_types_industries.add(job["industry"])
+
+    return list_types_industries
 
 
 def filter_by_industry(jobs, industry):
