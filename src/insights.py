@@ -31,7 +31,8 @@ def get_unique_industries(path):
     array_of_jobs = read(path)
     industries = set()
     for item in array_of_jobs:
-        industries.add(item['industry'])
+        if item:
+            industries.add(item['industry'])
     return industries
 
 
