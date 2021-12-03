@@ -4,9 +4,9 @@ import csv
 
 @lru_cache
 def read(path):
-    with open("jobs.csv") as jobs_file:
+    with open(path) as jobs_file:
         jobs_list = csv.DictReader(jobs_file)
-        print(jobs_list)
+        return list(jobs_list)
     """Reads a file from a given path and returns its contents
 
     Parameters
