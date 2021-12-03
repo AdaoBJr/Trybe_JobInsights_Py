@@ -48,19 +48,19 @@ def test_sort_by_criteria():
     assert sort_by(job_list, 'date_posted') == job_list_ordened_by_date_posted
     with pytest.raises(ValueError):
         sort_by([], 'invalid_criteira')
-    # with pytest.raises(ValueError):
-    #     sort_by(job_with_invalid_str_values, 'max_salary')
-    # with pytest.raises(TypeError):
-    #     sort_by(job_with_list_values, 'max_salary')
-    # with pytest.raises(ValueError):
-    #     sort_by(job_with_invalid_str_values, 'min_salary')
-    # with pytest.raises(TypeError):
-    #     sort_by(job_with_list_values, 'min_salary')
-    # with pytest.raises(NameError):
-    #     sort_by(job_with_invalid_str_values, 'date_posted')
-    # with pytest.raises(NameError):
-    #     sort_by(job_with_list_values, 'date_posted')
-    # assert sort_by(job_list, 'max_salary') == job_list_ordened_by_max_salary
+    with pytest.raises(ValueError):
+        sort_by(job_with_invalid_str_values, 'max_salary')
+    with pytest.raises(TypeError):
+        sort_by(job_with_list_values, 'max_salary')
+    with pytest.raises(ValueError):
+        sort_by(job_with_invalid_str_values, 'min_salary')
+    with pytest.raises(TypeError):
+        sort_by(job_with_list_values, 'min_salary')
+    with pytest.raises(NameError):
+        sort_by(job_with_invalid_str_values, 'date_posted')
+    with pytest.raises(NameError):
+        sort_by(job_with_list_values, 'date_posted')
+    assert sort_by(job_list, 'max_salary') == job_list_ordened_by_max_salary
 
 
 # def test_sort_by_min_salary():
