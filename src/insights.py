@@ -83,7 +83,11 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    job_list = []
+    for job in jobs:
+        if job["industry"] == industry:
+            job_list.append(job)
+    return job_list
 
 
 def get_max_salary(path):
@@ -107,7 +111,7 @@ def get_max_salary(path):
         if job["max_salary"] != "":
             if job["max_salary"].isdigit():
                 get_higher_salaries.append(int(job["max_salary"]))
-    return (max(get_higher_salaries))
+    return max(get_higher_salaries)
 
 
 def get_min_salary(path):
@@ -131,7 +135,7 @@ def get_min_salary(path):
         if job["min_salary"] != "":
             if job["min_salary"].isdigit():
                 get_min_salaries.append(int(job["min_salary"]))
-    return (min(get_min_salaries))
+    return min(get_min_salaries)
 
 
 def matches_salary_range(job, salary):
