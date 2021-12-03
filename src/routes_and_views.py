@@ -27,6 +27,7 @@ def job_page(index):
     selected_job = get_job(jobs, index)
     return render_template("job.jinja2", job=selected_job)
 
+
 @bp.route("/")
 def index():
     with open("README.md", encoding="UTF-8") as file:
