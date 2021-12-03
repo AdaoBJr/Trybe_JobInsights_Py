@@ -101,17 +101,18 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
-
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    jobs_list = []
+    jobs_filtered = []
+    for item in jobs:
+        if (
+            "min_salary" in item
+            and "max_salary" in item
+            and isinstance(item["min_salary"], int)
+            and isinstance(item["max_salary"], int)
+            and isinstance(salary, int)
+        ):
+            jobs_list.append(item)
+    for item in jobs_list:
+        if item["min_salary"] <= salary <= item["max_salary"]:
+            jobs_filtered.append(item)
+    return jobs_filtered
