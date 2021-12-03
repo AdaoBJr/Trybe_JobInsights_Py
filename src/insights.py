@@ -134,7 +134,7 @@ def get_min_salary(path):
     for rows in list:
         if rows["min_salary"] != "invalid" and rows["min_salary"].isnumeric():
             min_salary.append(int(rows["max_salary"]))
-    return max(min_salary)
+    return min(min_salary)
 
 
 def matches_salary_range(job, salary):
