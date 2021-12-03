@@ -1,4 +1,5 @@
 from src.jobs import read
+
 # from jobs import read
 
 
@@ -44,6 +45,11 @@ def filter_by_job_type(jobs, job_type):
         List of jobs with provided job_type
     """
 
+    # compreensão de listas
+    filter_list = [job for job in jobs if job["job_type"] == job_type]
+
+    return filter_list
+
 
 def get_unique_industries(path):
     """Checks all different industries and returns a list of them
@@ -65,7 +71,7 @@ def get_unique_industries(path):
     # list_types_jobs = []
 
     for job in list_jobs:
-        if (job["industry"] != ''):
+        if job["industry"] != "":
             list_types_industries.add(job["industry"])
 
     return list_types_industries
@@ -109,7 +115,7 @@ def get_max_salary(path):
     # list_types_jobs = []
 
     for job in list_jobs:
-        if (job["max_salary"] != '' and job["max_salary"] != 'invalid'):
+        if job["max_salary"] != "" and job["max_salary"] != "invalid":
             list_salaries.append(int(job["max_salary"]))
 
     return max(list_salaries)
@@ -135,7 +141,7 @@ def get_min_salary(path):
     # list_types_jobs = []
 
     for job in list_jobs:
-        if (job["min_salary"] != '' and job["min_salary"] != 'invalid'):
+        if job["min_salary"] != "" and job["min_salary"] != "invalid":
             list_salaries.append(int(job["min_salary"]))
 
     return min(list_salaries)
