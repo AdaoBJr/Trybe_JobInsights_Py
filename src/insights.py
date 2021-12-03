@@ -1,73 +1,38 @@
+from .jobs import read
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    unic_jobs = set()
+    list_of_jobs = read(path)
+    for job in list_of_jobs:
+        if job['job_type'] != '':
+            unic_jobs.add(job['job_type'])
+    return unic_jobs
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    filtered_jobs = []
+    for job in jobs:
+        if job['job_type'] == job_type:
+            filtered_jobs.append(job)
+    return filtered_jobs
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    unic_industries = set()
+    list_of_jobs = read(path)
+    for job in list_of_jobs:
+        if job['industry'] != '':
+            unic_industries.add(job['industry'])
+    return unic_industries
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    filtered_industries = []
+    for job in jobs:
+        if job['industry'] == industry:
+            filtered_industries.append(job)
+    return filtered_industries
 
 
 def get_max_salary(path):
