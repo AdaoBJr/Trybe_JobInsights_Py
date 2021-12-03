@@ -9,4 +9,4 @@ def read(path):
         header_of_jobs = csv.DictReader(file)
         for row in header_of_jobs:
             headers.append(row)
-    return []
+    return headers
