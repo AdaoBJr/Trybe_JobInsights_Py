@@ -106,4 +106,4 @@ if __name__ == "__main__":
         {"max_salary": 1500, "min_salary": 0, "date_posted": 2020},
         {"max_salary": -1, "min_salary": 10, "date_posted": 2021},
     ]
-    print(sort_by(jobs, "date_posted"))
+    print(sort_by(jobs, "min_salary"))
