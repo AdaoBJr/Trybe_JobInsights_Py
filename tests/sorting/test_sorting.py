@@ -65,12 +65,12 @@ def test_sort_by_criteria():
 
 # def test_sort_by_min_salary():
 #     assert sort_by(job_list, 'min_salary') == job_list_ordened_by_min_salary
-# 
-# 
+
+
 # def test_sort_by_date_posted():
-#     assert sort_by(job_list, 'date_posted') == job_list_ordened_by_date_posted
-# 
-# 
+# assert sort_by(job_list, 'date_posted') == job_list_ordened_by_date_posted
+
+
 # def test_sort_by_when_a_invalid_criteria_is_sent():
 #     with pytest.raises(ValueError):
 #         sort_by([], 'invalid_criteira')
