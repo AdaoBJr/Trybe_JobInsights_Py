@@ -1,18 +1,12 @@
 from functools import lru_cache
+import csv
 
 
 @lru_cache
 def read(path):
-    """Reads a file from a given path and returns its contents
-
-    Parameters
-    ----------
-    path : str
-        Full path to file
-
-    Returns
-    -------
-    list
-        List of rows as dicts
-    """
+    headers = []
+    with open(path, mode="r") as file:
+        header_of_jobs = csv.DictReader(file)
+        for row in header_of_jobs:
+            headers.append(row)
     return []
