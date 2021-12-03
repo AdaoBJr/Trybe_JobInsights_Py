@@ -25,9 +25,11 @@ def test_sort_by_criteria():
     assert sort_by(jobs_list, "max_salary") == jobs_list_max_and_date
     assert sort_by(jobs_list, "date_posted") == jobs_list_max_and_date
 
-    with pytest.raises(ValueError, match="invalid sorting criteria: teste"):
-        sort_by(jobs_list, "teste")
+    with pytest.raises(TypeError, match="missing 1 required positional argument: 'criteria'"):
+        sort_by(jobs_list)
 
 
 # agradecimentos ao pedro
 # pr: https://github.com/tryber/sd-010-b-project-job-insights/pull/19
+# agradecimentos ao ederson
+# https://github.com/tryber/sd-010-b-project-job-insights/pull/47
