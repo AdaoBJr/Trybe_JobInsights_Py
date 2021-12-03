@@ -51,3 +51,7 @@ def test_sort_by_criteria():
         TypeError, match="missing 1 required positional argument: 'criteria'"
     ):
         sort_by(jobs_list)
+
+
+# agradecimentos ao pedro henrique
+
