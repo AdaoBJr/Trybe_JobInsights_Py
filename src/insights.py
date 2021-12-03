@@ -61,10 +61,9 @@ def get_max_salary(path):
     salaries = []
 
     for item in array_of_jobs:
-        if item['max_salary']:
+        if item['max_salary'] and item['max_salary'].isnumeric():
             salaries.append(int(item['max_salary']))
     return (max(salaries))
-    # return salaries
 
 
 def get_min_salary(path):
