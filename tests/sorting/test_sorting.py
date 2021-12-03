@@ -53,5 +53,5 @@ def test_sort_by_criteria():
         sort_by(jobs_list)
 
 
-# agradecimentos ao pedro henrique
+# agradecimentos ao pedro henrique.
 
