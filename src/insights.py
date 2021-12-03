@@ -54,22 +54,23 @@ def filter_by_industry(jobs, industry):
     return []
 
 
+# def salaries_max_unique(job):
+#     salaries_unique = set()
+#     for salary in job:
+#         if salary['max_salary'] not in '' and 'invalid':
+#             int(salary['max_salary'])
+#             salaries_unique.add(salary['max_salary'])
+#     return salaries_unique
+
+
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    jobs = read(path)
+    salaries = []
+    for salary in jobs:
+        if salary['max_salary'] != '' and salary['max_salary'] != 'invalid':
+            salary_int = int(salary['max_salary'])
+            salaries.append(salary_int)
+    return max(salaries)
 
 
 def get_min_salary(path):
