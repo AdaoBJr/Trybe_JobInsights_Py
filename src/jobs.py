@@ -19,4 +19,3 @@ def read(path):
     with open(path) as file:
         path_reader = csv.DictReader(file)
         return [item for item in path_reader]
-
