@@ -168,7 +168,7 @@ def matches_salary_range(job, salary):
     """
 
     try:
-        match_function(job["max_salary"], job["min_salary"], salary)
+        return match_function(job["max_salary"], job["min_salary"], salary)
     except KeyError:
         raise ValueError(
             "job['min_salary'] or job['max_salary'] doesn't exists"
@@ -204,21 +204,27 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    filter_jobs = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                filter_jobs.append(job)
+        except ValueError:
+            pass
+    return filter_jobs
 
 
 if __name__ == "__main__":
     # print(get_unique_job_types("jobs.csv"))
     # print(get_unique_industries("jobs.csv"))
     # print(get_max_salary("jobs.csv"))
-    invalid_types = [None, "", [], {}, lambda: 1]
-    for invalid in invalid_types:
-        print(
-            matches_salary_range(
-                {
-                    "min_salary": 0,
-                    "max_salary": 1500,
-                },
-                invalid,
-            )
+
+    print(
+        matches_salary_range(
+            {
+                "min_salary": 0,
+                "max_salary": 1500,
+            },
+            50,
         )
+    )
