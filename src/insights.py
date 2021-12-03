@@ -69,39 +69,49 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
+    # """Filters a list of jobs by industry
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
+    # Parameters
+    # ----------
+    # jobs : list
+    #     List of jobs to be filtered
+    # industry : str
+    #     Industry for the list filter
 
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    # Returns
+    # -------
+    # list
+    #     List of jobs with provided industry
+    # """
+
+    list = []
+    for rows in jobs:
+        if rows["industry"] == industry:
+            list.append(rows)
+    return list
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    # """Get the maximum salary of all jobs
 
-    Must call `read`
+    # Must call `read`
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    # Parameters
+    # ----------
+    # path : str
+    #     Must be passed to `read`
 
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    # Returns
+    # -------
+    # int
+    #     The maximum salary paid out of all job opportunities
+    # """
+    list = read(path)
+    max_salary = []
+    for rows in list:
+        if rows["max_salary"] != "invalid" and rows["max_salary"].isnumeric():
+            max_salary.append(int(rows["max_salary"]))
+    return max(max_salary)
 
 
 def get_min_salary(path):
