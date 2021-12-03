@@ -181,8 +181,8 @@ def test_matches_salary_range():
         {"max_salary": -1, "min_salary": 10},
     ]
     jobs = [
-        {"max_salary": 10000, "min_salary": 200},
-        {"max_salary": 1500, "min_salary": 0},
+  {"max_salary": 1500, "min_salary": 0},      {"max_salary": 10000, "min_salary": 200},
+
     ]
     salaries = [0, 1, 5, 1000, 2000, -1, -2]
     expected = [
