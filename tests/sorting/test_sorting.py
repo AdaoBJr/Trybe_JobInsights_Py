@@ -4,6 +4,7 @@ import pytest
 
 def test_sort_by_criteria():
     invalid_criteria = 'batata'
+    
     jobs = [
         {"min_salary": 4458, "max_salary": 8216, "date_posted": "2020-05-08"},
         {"min_salary": 9471, "max_salary": 10327, "date_posted": "2020-05-05"},
