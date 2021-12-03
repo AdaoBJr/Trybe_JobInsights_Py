@@ -95,7 +95,9 @@ def matches_salary_range(job, salary):
         return True
     else:
         return False
-#agradecimentos ao rafael gumieri
+
+
+# agradecimentos ao rafael gumieri
 
 
 def filter_by_salary_range(jobs, salary):
