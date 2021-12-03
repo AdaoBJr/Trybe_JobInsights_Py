@@ -145,6 +145,9 @@ def get_min_salary(path):
     return min(result)
 
 
+import csv
+
+
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
@@ -168,7 +171,29 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    # min_sal = job["min_salary"]
+    # max_sal = job["max_salary"]
+    print(job, salary)
+
+    is_false = (
+        "max_salary" not in job
+        or "min_salary" not in job
+        or job["min_salary"] > job["max_salary"]
+        or type(job["min_salary"]) != int
+        or type(job["max_salary"]) != int
+        or type(salary) != int
+    )
+
+    if is_false:
+        raise ValueError
+
+    elif salary > job["max_salary"] or salary < job["min_salary"]:
+        raise False
+    else:
+        return True
+
+
+matches_salary_range({'max_salary': '1000'}, 10)
 
 
 def filter_by_salary_range(jobs, salary):
