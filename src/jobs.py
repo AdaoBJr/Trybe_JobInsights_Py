@@ -1,8 +1,8 @@
-# from functools import lru_cache
+from functools import lru_cache
 import csv
 
 
-# @lru_cache
+@lru_cache
 def read(path):
     with open(path) as file:
         job_description = csv.reader(file, delimiter=",", quotechar='"')
