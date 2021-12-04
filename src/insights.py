@@ -56,7 +56,8 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    industries = get_column_unique(read(path), "industry")
+    return list(filter(None, industries))
 
 
 def filter_by_industry(jobs, industry):
