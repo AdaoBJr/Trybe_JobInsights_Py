@@ -46,7 +46,7 @@ def get_min_salary(path):
     ]
     return min(salaries)
 
-print(get_min_salary("src/jobs.csv"))
+
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
