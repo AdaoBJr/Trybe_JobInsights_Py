@@ -1,4 +1,4 @@
-from jobs import read
+from src.jobs import read
 
 
 def get_unique_job_types(path):
@@ -10,7 +10,7 @@ def get_unique_job_types(path):
     return job_types
 
 
-get_unique_job_types("src/jobs.csv")
+# get_unique_job_types("src/jobs.csv")
 
 
 def filter_by_job_type(jobs, job_type):
