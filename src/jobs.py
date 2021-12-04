@@ -1,18 +1,18 @@
 from functools import lru_cache
+import csv
 
 
 @lru_cache
 def read(path):
-    """Reads a file from a given path and returns its contents
+    with open(path) as file:
+        data_python = csv.reader(file)
+        header, *data = data_python
+    list = []
+    for item in data:
+        list.append(trans_dict(item, header))
+    return list
 
-    Parameters
-    ----------
-    path : str
-        Full path to file
 
-    Returns
-    -------
-    list
-        List of rows as dicts
-    """
-    return []
+def trans_dict(item, header):
+    result = {header[idx]: itm for idx, itm in enumerate(item)}
+    return result
