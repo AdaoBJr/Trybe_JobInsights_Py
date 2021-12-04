@@ -28,8 +28,8 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    filtered_jobs = [job for job in jobs if job["industry"] == industry]
-    return filtered_jobs
+    filtered_industries = [job for job in jobs if job["industry"] == industry]
+    return filtered_industries
 
     """Filters a list of jobs by industry
 
@@ -72,33 +72,31 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    # Ajuda de lara
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
+    try:
+        if type(salary) != int:
+            raise ValueError("Salary is not a integer")
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
+        if job["min_salary"] > job["max_salary"]:
+            raise ValueError("Min_salary is greater than max_salary")
 
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+        return job["min_salary"] <= salary <= job["max_salary"]
+    except Exception:
+        raise ValueError("Salary is not a integer")
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
+    filter_jobs_ini = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                filter_jobs_ini.append(job)
+        except ValueError:
+            pass
+    return filter_jobs_ini
+
+    """Filters a list of jobs by salary r,ange
 
     Parameters
     ----------
