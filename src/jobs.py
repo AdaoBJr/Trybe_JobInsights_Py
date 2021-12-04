@@ -23,6 +23,3 @@ def getDictsFromCsv(header, data):
         elements.append(dictionarie)
 
     return elements
-
-
-print(read("src/jobs.csv"))
