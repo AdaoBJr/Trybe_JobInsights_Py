@@ -1,20 +1,13 @@
+from jobs import read
+
+
 def get_unique_job_types(path):
-    # começando
-    """Checks all different job types and returns a list of them
+    unique_types = [
+        item["job_type"] for item in read(path) if item["job_type"] != " "
+    ]
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    # https://pt.stackoverflow.com/questions/192567/removendo-elementos-duplicados-em-uma-lista-com-python
+    return sorted(set(unique_types))
 
 
 def filter_by_job_type(jobs, job_type):
