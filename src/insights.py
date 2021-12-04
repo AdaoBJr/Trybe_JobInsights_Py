@@ -36,43 +36,36 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    salaries = []
+    list_of_jobs = read(path)
+    for job in list_of_jobs:
+        if (job['max_salary'] != 'invalid') and (job['max_salary'] != ''):
+            salaries.append(int(job['max_salary']))
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    return max(salaries)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    salaries = []
+    list_of_jobs = read(path)
+    for job in list_of_jobs:
+        if (job['min_salary'] != 'invalid') and (job['min_salary'] != ''):
+            salaries.append(int(job['min_salary']))
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    return min(salaries)
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    """try:
+        if (salary > job['min_salary']) and (salary < job['max_salary']):
+            return True
+        else:
+            return False
+        job['min_salary']
+        job['max_salary']
+    except ValueError:
+        if salary > job['max_salary']:
+    Checks if a given salary is in the salary range of a given job
 
     Parameters
     ----------
