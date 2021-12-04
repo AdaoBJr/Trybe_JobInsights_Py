@@ -1,4 +1,5 @@
-from src.jobs import read
+# from src.jobs import read
+from jobs import read
 
 
 def get_column_unique(dict, name_column):
@@ -38,7 +39,8 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    jobs_filter = filter(lambda job: job["job_type"] == job_type, jobs)
+    return list(jobs_filter)
 
 
 def get_unique_industries(path):
@@ -75,7 +77,8 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    indrutries = filter(lambda job: job["industry"] == industry, jobs)
+    return list(indrutries)
 
 
 def get_max_salary(path):
@@ -93,7 +96,10 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    salaries = map(lambda job: job["max_salary"], read(path))
+    salaries_str = filter(str.isdigit, salaries)
+    salary_max = max(map(lambda salary: int(salary), salaries_str))
+    return salary_max
 
 
 def get_min_salary(path):
@@ -158,4 +164,16 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+
+    salaries_str = filter(
+        lambda job: job["min_salary"].isnumeric()
+        and job["max_salary"].isnumeric(),
+        jobs,
+    )
+
+    salaries_filt = filter(
+        lambda job: int(job["min_salary"]) <= salary <= int(job["max_salary"]),
+        salaries_str,
+    )
+
+    return list(salaries_filt)
