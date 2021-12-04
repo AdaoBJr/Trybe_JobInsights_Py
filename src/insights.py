@@ -2,13 +2,14 @@ from src import jobs
 
 
 def get_unique_job_types(path):
-    job_list = []
+    job_type_list = []
     file_reader = jobs.read(path)
     for job in file_reader:
-        if job["job_type"] not in job_list:
-            job_list.append(job["job_type"])
+        # https://appdividend.com/2020/01/21/python-list-contains-how-to-check-if-item-exists-in-list/
+        if job["job_type"] not in job_type_list:
+            job_type_list.append(job["job_type"])
 
-    return job_list
+    return job_type_list
 
 
 def filter_by_job_type(jobs, job_type):
@@ -30,21 +31,13 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    job_industry_list = []
+    file_reader = jobs.read(path)
+    for job in file_reader:
+        if job["industry"] not in job_industry_list and job["industry"] != '':
+            job_industry_list.append(job["industry"])
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return job_industry_list
 
 
 def filter_by_industry(jobs, industry):
