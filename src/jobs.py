@@ -8,4 +8,6 @@ path = "src/jobs.csv"
 @lru_cache
 def read(path):
     with open(path) as file:
-        return list(csv.DictReader(file))
+        teste = csv.DictReader(file)
+        lista = [teste]
+        return lista
