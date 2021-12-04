@@ -1,3 +1,5 @@
+# from .jobs import read
+
 def get_unique_job_types(path):
     """Checks all different job types and returns a list of them
 
