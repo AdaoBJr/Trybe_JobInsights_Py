@@ -1,4 +1,4 @@
-from .jobs import read
+from jobs import read
 
 
 def get_unique_job_types(path):
@@ -63,39 +63,35 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    MAX_SALARY_COLUMN = "max_salary"
+    tmp = read(path)
+    highestSalary = float("-inf")
+    for dic in tmp:
+        try:
+            currentIteratedSalary = int(dic[MAX_SALARY_COLUMN])
+            if currentIteratedSalary > highestSalary:
+                highestSalary = currentIteratedSalary
 
-    Must call `read`
+        except Exception:
+            highestSalary = highestSalary
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    return highestSalary
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    MIN_SALARY_COLUMN = "min_salary"
+    tmp = read(path)
+    minimumSalary = float("inf")
+    for dic in tmp:
+        try:
+            currentIteratedSalary = int(dic[MIN_SALARY_COLUMN])
+            if currentIteratedSalary < minimumSalary:
+                minimumSalary = currentIteratedSalary
 
-    Must call `read`
+        except Exception:
+            minimumSalary = minimumSalary
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    return minimumSalary
 
 
 def matches_salary_range(job, salary):
@@ -145,4 +141,6 @@ def filter_by_salary_range(jobs, salary):
 if __name__ == "__main__":
     PATH = "src/jobs.csv"
     # print(get_unique_job_types(PATH))
-    print(get_unique_industries(PATH))
+    # print(get_unique_industries(PATH))
+    print(get_max_salary(PATH))
+    print(get_min_salary(PATH))
