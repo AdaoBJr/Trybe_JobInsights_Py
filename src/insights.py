@@ -31,7 +31,8 @@ def get_unique_industries(path):
     list_jobs = read(path)
     jobs_industry = set()
     for job in list_jobs:
-        jobs_industry.add(job["industry"])
+        if job["industry"] != '':
+            jobs_industry.add(job["industry"])
     return jobs_industry
 
 
@@ -60,7 +61,7 @@ def get_max_salary(path):
     list_jobs = read(path)
     max_salary = 0
     for job in list_jobs:
-        if job["max_salary"] != '':
+        if job["max_salary"] != '' and job["max_salary"].isnumeric():
             if float(job["max_salary"]) > max_salary:
                 max_salary = float(job["max_salary"])
     return max_salary
@@ -70,7 +71,7 @@ def get_min_salary(path):
     list_jobs = read(path)
     min_salary = get_max_salary(path)
     for job in list_jobs:
-        if job["min_salary"] != '':
+        if job["min_salary"] != '' and job["min_salary"].isnumeric():
             if float(job["min_salary"]) < min_salary:
                 min_salary = float(job["min_salary"])
     return min_salary
