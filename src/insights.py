@@ -122,4 +122,3 @@ def filter_by_salary_range(jobs, salary):
 if __name__ == "__main__":
     print(get_unique_job_types("src/jobs.csv"))
     print(get_min_salary("src/jobs.csv"))
-
