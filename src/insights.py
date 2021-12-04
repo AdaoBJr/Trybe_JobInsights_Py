@@ -39,6 +39,7 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
+    print(jobs, industry)
     """Filters a list of jobs by industry
 
     Parameters
