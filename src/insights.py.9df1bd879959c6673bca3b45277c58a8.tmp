@@ -5,10 +5,9 @@ def get_unique_job_types(path):
     job_list = []
     file_reader = jobs.read(path)
     for job in file_reader:
-        if job["job_type"] not in job_list:
-            job_list.append(job["job_type"])
-
-    return job_list
+        if job["job_title"] not in job_list
+            job_list.append(job["job_title"])
+    print(job_list)
 
 
 def filter_by_job_type(jobs, job_type):
