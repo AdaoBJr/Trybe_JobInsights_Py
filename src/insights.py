@@ -29,11 +29,7 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    filtered_jobs = [
-        job
-        for job in jobs
-        if job['job_type'] == job_type
-        ]
+    filtered_jobs = [job for job in jobs if job["job_type"] == job_type]
     """Filters a list of jobs by job_type
 
     Parameters
@@ -82,11 +78,7 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    filtered_jobs = [
-        job
-        for job in jobs
-        if job['industry'] == industry
-        ]
+    filtered_jobs = [job for job in jobs if job["industry"] == industry]
     """Filters a list of jobs by industry
 
     Parameters
@@ -156,29 +148,27 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
-
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
-
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
+    try:
+        if type(salary) != int:
+            raise ValueError("Salary not a number")
+        if job["min_salary"] > job["max_salary"]:
+            raise ValueError("Error")
+        if type(job["min_salary"]) != int or type(job["max_salary"]) != int:
+            raise TypeError("Not a number")
+        return job["min_salary"] <= salary <= job["max_salary"]
+    except Exception:
+        raise ValueError("Except valueError")
     pass
+
+
+# print(matches_salary_range(
+#     [
+#         {"max_salary": 10000, "min_salary": 200},
+#         {"max_salary": 1500, "min_salary": 0}
+#     ],
+#     [
+#         0, 1, 5, 1000, 2000, -1, -2
+#     ]))
 
 
 def filter_by_salary_range(jobs, salary):
