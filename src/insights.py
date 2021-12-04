@@ -49,8 +49,6 @@ def get_max_salary(path):
             max_salary = int(job["max_salary"])
     return max_salary
 
-    pass
-
 
 def get_min_salary(path):
     all_jobs = read(path)
@@ -63,33 +61,55 @@ def get_min_salary(path):
         ):
             min_salary = int(job["min_salary"])
     return min_salary
-    pass
+
+
+# def verify_max_and_min_salary(job):
+#     try:
+#         print()
+#     except:
+#         return False
+
+
+#     if "min_salary" not in job or "max_salary" not in job:
+#         raise ValueError("Uma das chaves não existem")
+
+#     if isinstance(job["min_salary"], )
+
+# if not job["min_salary"].isnumeric() or not job["max_salary"].isnumeric:
+#     raise ValueError("Não é inteiro")
+
+#     if job["min_salary"] > job["max_salary"]:
+#         raise ValueError("Salário mínimo maior")
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    # Requisito reestruturado com ajuda do Bux;
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
+    # verify_max_and_min_salary(job)
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
+    try:
+        if type(salary) != int:
+            raise ValueError("Salary deve ser um inteiro")
 
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+        if job["min_salary"] > job["max_salary"]:
+            raise ValueError(
+                "Salario minimo deve ser menor que salario máximo"
+            )
+
+        return job["min_salary"] <= salary <= job["max_salary"]
+    except Exception:
+        raise ValueError("Salary deve ser um inteiro")
+
+    # if type(salary) != int:
+    #     raise ValueError("Salary deve ser um inteiro")
+
+    # if job["min_salary"] < job["max_salary"]:
+    #     return True
+
+    # return False
+
+
+# matches_salary_range({"min_salary": "2000", "max_salary": "5000"}, 6000)
 
 
 def filter_by_salary_range(jobs, salary):
