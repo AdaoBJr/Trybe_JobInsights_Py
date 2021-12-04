@@ -29,21 +29,13 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    jobs_list = read(path)
+    indrustries_array = set()
+    for industries in jobs_list:
+        indrustries_array.add(industries["industry"])
+# https://stackoverflow.com/questions/3845423/remove-empty-strings-from-a-list-of-strings
+    indrustries_array = list(filter(None, indrustries_array))
+    return indrustries_array
 
 
 def filter_by_industry(jobs, industry):
