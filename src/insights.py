@@ -29,21 +29,12 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    unique_industries = [
+        item["industry"] for item in read(path) if item["industry"] != " "
+    ]
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    # https://pt.stackoverflow.com/questions/192567/removendo-elementos-duplicados-em-uma-lista-com-python
+    return sorted(set(unique_industries))
 
 
 def filter_by_industry(jobs, industry):
@@ -65,39 +56,13 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    salaries = [item["max_salary"] for item in read(path)]
+    return max(salaries)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    salaries = [item["min_salary"] for item in read(path)]
+    return min(salaries)
 
 
 def matches_salary_range(job, salary):
