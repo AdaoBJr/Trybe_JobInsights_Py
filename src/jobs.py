@@ -14,6 +14,3 @@ def read(path):
                 job_description[field] = job[idx]
             jobs.append(job_description)
     return [jobs]
-
-
-read("src/jobs.csv")
