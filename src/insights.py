@@ -7,7 +7,7 @@ def get_unique_job_types(path):
     jobs = set()
     for job in all_jobs:
         jobs.add(job["job_type"])
-        return jobs
+    return jobs
     """
     faz um for em todos os  all_jobs e adiciona ao conjunto jobs
     todos os tipos de empregos(coluna job_types)
