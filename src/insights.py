@@ -1,123 +1,105 @@
-from jobs import read
+from .jobs import read
+
+
+def filterBy(column, jobs, searchParam):
+    return filter(lambda val: val[column] == searchParam, jobs)
 
 
 def get_unique_job_types(path):
     JOB_TYPE = "job_type"
 
     tmp = read(path)
-    uniqueJobs = set()
+    unique_jobs = set()
 
     for dic in tmp:
-        uniqueJobs.add(dic[JOB_TYPE])
+        unique_jobs.add(dic[JOB_TYPE])
 
-    return list(uniqueJobs)
+    return list(unique_jobs)
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    JOB_TYPE = "job_type"
+    filteredObj = filterBy(JOB_TYPE, jobs, job_type)
+    return list(filteredObj)
 
 
 def get_unique_industries(path):
     INDUSTRY_COLUMN = "industry"
 
     tmp = read(path)
-    uniqueIndustries = set()
+    unique_industries = set()
 
     for dic in tmp:
         if dic[INDUSTRY_COLUMN]:
-            uniqueIndustries.add(dic[INDUSTRY_COLUMN])
+            unique_industries.add(dic[INDUSTRY_COLUMN])
 
-    return list(uniqueIndustries)
+    return list(unique_industries)
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    INDUSTRY = "industry"
+    filteredObj = filterBy(INDUSTRY, jobs, industry)
+    return list(filteredObj)
 
 
 def get_max_salary(path):
     MAX_SALARY_COLUMN = "max_salary"
     tmp = read(path)
-    highestSalary = float("-inf")
+    highest_salary = float("-inf")
     for dic in tmp:
         try:
-            currentIteratedSalary = int(dic[MAX_SALARY_COLUMN])
-            if currentIteratedSalary > highestSalary:
-                highestSalary = currentIteratedSalary
+            current_iterated_salary = int(dic[MAX_SALARY_COLUMN])
+            if current_iterated_salary > highest_salary:
+                highest_salary = current_iterated_salary
 
         except Exception:
-            highestSalary = highestSalary
+            highest_salary = highest_salary
 
-    return highestSalary
+    return highest_salary
 
 
 def get_min_salary(path):
     MIN_SALARY_COLUMN = "min_salary"
     tmp = read(path)
-    minimumSalary = float("inf")
+    minimum_salary = float("inf")
     for dic in tmp:
         try:
-            currentIteratedSalary = int(dic[MIN_SALARY_COLUMN])
-            if currentIteratedSalary < minimumSalary:
-                minimumSalary = currentIteratedSalary
+            current_iterated_salary = int(dic[MIN_SALARY_COLUMN])
+            if current_iterated_salary < minimum_salary:
+                minimum_salary = current_iterated_salary
 
         except Exception:
-            minimumSalary = minimumSalary
+            minimum_salary = minimum_salary
 
-    return minimumSalary
+    return minimum_salary
+
+
+def checkSalaryType(job, salary):
+    if "min_salary" not in job or "max_salary" not in job:
+        raise ValueError()
+    if (
+        type(job["min_salary"]) != int
+        or type(job["max_salary"]) != int
+        or type(salary) != int
+    ):
+        raise ValueError()
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    checkSalaryType(job, salary)
+    MINIMUM_SALARY = "min_salary"
+    MAXIMUM_SALARY = "max_salary"
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
+    job_minimum = int(job[MINIMUM_SALARY])
+    job_maximum = int(job[MAXIMUM_SALARY])
+    salary = int(salary)
+    if job_minimum > job_maximum:
+        raise ValueError()
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    if salary >= job_minimum and salary <= job_maximum:
+        return True
+    else:
+        return False
 
 
 def filter_by_salary_range(jobs, salary):
@@ -142,5 +124,7 @@ if __name__ == "__main__":
     PATH = "src/jobs.csv"
     # print(get_unique_job_types(PATH))
     # print(get_unique_industries(PATH))
-    print(get_max_salary(PATH))
-    print(get_min_salary(PATH))
+    # print(get_max_salary(PATH))
+    # print(get_min_salary(PATH))
+    # print(filter_by_job_type(read(PATH), "FULL_TIME"))
+    # print(matches_salary_range({"max_salary": 1500, "min_salary": 0}, 0))
