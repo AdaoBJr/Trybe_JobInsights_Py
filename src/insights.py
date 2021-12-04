@@ -13,21 +13,12 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    jobs_list = []
+    for job in jobs:
+        print(job)
+        if job['job_type'] == job_type:
+            jobs_list.append(job)
+    return jobs_list
 
 
 def get_unique_industries(path):
@@ -59,22 +50,23 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    max_salary = 0
+    max_salary = []
     file_reader = jobs.read(path)
     for job in file_reader:
-        if job["max_salary"] != '' and job["max_salary"] != 'invalid' and int(job["max_salary"]) > max_salary:
-            max_salary = int(job["max_salary"])
-    
-    return max_salary
+        if job["max_salary"] != '' and job["max_salary"] != 'invalid':
+            max_salary.append(int(job["max_salary"]))
+    # https://www.w3schools.com/python/ref_func_max.asp
+    return max(max_salary)
 
 
 def get_min_salary(path):
-    min_salary = 9999999999999999999999999
+    min_salary = []
     file_reader = jobs.read(path)
     for job in file_reader:
-        if job["min_salary"] != '' and job["min_salary"] != 'invalid' and int(job["min_salary"]) < min_salary:
-            min_salary = int(job["min_salary"])
-    return min_salary
+        if job["min_salary"] != '' and job["min_salary"] != 'invalid':
+            min_salary.append(int(job["min_salary"]))
+    # https://www.w3schools.com/python/ref_func_min.asp
+    return min(min_salary)
 
 
 def matches_salary_range(job, salary):
