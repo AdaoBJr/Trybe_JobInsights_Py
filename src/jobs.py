@@ -9,5 +9,4 @@ path = "src/jobs.csv"
 def read(path):
     with open(path) as file:
         teste = csv.DictReader(file)
-        lista = [teste]
-        return lista
+        return list(teste)
