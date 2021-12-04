@@ -12,4 +12,4 @@ def read(path):
         lista = []
         for index in teste:
             lista.append(index)
-        return list(lista)
+        return lista
