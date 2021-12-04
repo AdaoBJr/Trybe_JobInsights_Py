@@ -22,7 +22,7 @@ def get_unique_industries(path):
     jobs_list = read(path)
     industries = []
     for job in jobs_list:
-        if not (job['industry'] in industries) :
+        if not (job['industry'] in industries):
             industries.append(job['industry'])
     return industries
 
