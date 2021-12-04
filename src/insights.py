@@ -111,7 +111,10 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    salaries = map(lambda job: job["min_salary"], read(path))
+    salaries_str = filter(str.isdigit, salaries)
+    salary_min = min(map(lambda salary: int(salary), salaries_str))
+    return salary_min
 
 
 def matches_salary_range(job, salary):
