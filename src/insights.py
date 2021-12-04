@@ -1,3 +1,10 @@
+from src.jobs import read
+
+
+def get_column_unique(dict, name_column):
+    return set(map(lambda job: job[name_column], dict))
+
+
 def get_unique_job_types(path):
     """Checks all different job types and returns a list of them
 
@@ -13,7 +20,7 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    return []
+    return get_column_unique(read(path), "job_type")
 
 
 def filter_by_job_type(jobs, job_type):
