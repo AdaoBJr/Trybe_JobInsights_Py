@@ -1,4 +1,4 @@
-from src.jobs import read
+from jobs import read
 
 
 def get_unique_job_types(path):
@@ -68,11 +68,11 @@ def get_max_salary(path):
 
 def get_min_salary(path):
     list_jobs = read(path)
-    min_salary = 0
+    min_salary = get_max_salary(path)
     for job in list_jobs:
-        if job["max_salary"] != '':
-            if float(job["max_salary"]) < min_salary:
-                min_salary = float(job["max_salary"])
+        if job["min_salary"] != '':
+            if float(job["min_salary"]) < min_salary:
+                min_salary = float(job["min_salary"])
     return min_salary
 
 
