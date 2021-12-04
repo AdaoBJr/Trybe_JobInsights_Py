@@ -1,4 +1,4 @@
-from jobs import read
+from src.jobs import read
 
 
 def get_unique_job_types(path):
@@ -11,26 +11,13 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    filtered_jobs = [item for item in jobs if item["job_type"] == job_type]
+    return filtered_jobs
 
 
 def get_unique_industries(path):
     unique_industries = [
-        item["industry"] for item in read(path) if item["industry"] != " "
+        item["industry"] for item in read(path) if item["industry"] != ""
     ]
 
     # https://pt.stackoverflow.com/questions/192567/removendo-elementos-duplicados-em-uma-lista-com-python
@@ -38,33 +25,28 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    filtered_jobs = [item for item in jobs if item["industry"] == industry]
+    return filtered_jobs
 
 
 def get_max_salary(path):
-    salaries = [item["max_salary"] for item in read(path)]
+    salaries = [
+        int(item["max_salary"])
+        for item in read(path)
+        if item["max_salary"] != ""
+    ]
     return max(salaries)
 
 
 def get_min_salary(path):
-    salaries = [item["min_salary"] for item in read(path)]
+    salaries = [
+        int(item["min_salary"])
+        for item in read(path)
+        if item["min_salary"] != ""
+    ]
     return min(salaries)
 
-
+print(get_min_salary("src/jobs.csv"))
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
