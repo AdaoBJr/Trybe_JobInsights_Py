@@ -1,5 +1,16 @@
-# from src.sorting import sort_by
+from src.sorting import sort_by
+
+
+salary_list = [
+    {"min_salary": 1000, "max_salary": 5000, "date_posted": "2021-01-01"},
+    {"min_salary": 2000, "max_salary": 10000, "date_posted": "2021-02-02"},
+]
+
+
+min_salary = [
+    {"min_salary": 1000, "max_salary": 2000, "date_posted": "2021-01-01"},
+]
 
 
 def test_sort_by_criteria():
-    pass
+    assert sort_by(salary_list, "min_salary") == min_salary
