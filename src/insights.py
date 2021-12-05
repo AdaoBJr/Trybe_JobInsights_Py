@@ -55,13 +55,13 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    try: 
+    try:
         if type(salary) != int:
             raise ValueError("Salário não é um número inteiro")
         if job["min_salary"] > job["max_salary"]:
-            raise ValueError("Salário minímo não pode ser maior que Salário máximo")
+            raise ValueError("Salário min não pode ser maior que Salário máx")
         return job["min_salary"] <= salary <= job["max_salary"]
-    except:
+    except Exception:
         raise ValueError("Salário não é um número inteiro")
 
 
