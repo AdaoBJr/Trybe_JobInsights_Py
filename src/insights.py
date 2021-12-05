@@ -1,19 +1,14 @@
+from src.jobs import read
+# https://csatlas.com/python-import-file-module/
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
+    all_jobs = read(path)
+    all_types = []
+    for types in all_jobs:
+        all_types.append(types["job_type"])
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    return list(set(all_types))
 
 
 def filter_by_job_type(jobs, job_type):
@@ -71,6 +66,13 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
+
+    all_jobs = read(path)
+    all_types = []
+    for types in all_jobs:
+        all_types.append(types["job_type"])
+
+    return list(set(all_types))
     """Get the maximum salary of all jobs
 
     Must call `read`
@@ -107,6 +109,7 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
+    
     """Checks if a given salary is in the salary range of a given job
 
     Parameters
