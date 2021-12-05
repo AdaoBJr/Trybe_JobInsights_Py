@@ -65,7 +65,7 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-        if "min_salary" not in job or "max_salary" not in job:
+    if "min_salary" not in job or "max_salary" not in job:
         raise ValueError("`job` must have `min_salary` and `max_salary` keys")
 
     elif (type(job["min_salary"]) == str or type(job["max_salary"]) == str or
