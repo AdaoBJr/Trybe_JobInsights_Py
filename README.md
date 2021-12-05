@@ -257,7 +257,7 @@ Com esta preparação feita, podemos executar os testes:
 $ python3 -m pytest
 ```
 
-O arquivo `pyproject.toml` já configura corretamente o pytest. Entretanto, caso você tenha problemas com isso queira explicitamente uma saída completa, o comando é:
+O arquivo `pyproject.toml` já configura corretamente o pytest. Entretanto, caso você tenha problemas com isso e queira explicitamente uma saída completa, o comando é:
 
 ```bash
 python3 -m pytest -s -vv
