@@ -1,78 +1,16 @@
-# iniciando projeto
+from src.jobs import read
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    jobs = read(path)
+    job_types = set()
+    for job in jobs:
+        job_types.add(job["job_type"])
+    return job_types
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
-
-
-def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
-
-
-def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
-
-
-def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    """Get the minimum salary of all jobs
 
     Must call `read`
 
@@ -84,9 +22,59 @@ def get_max_salary(path):
     Returns
     -------
     int
-        The maximum salary paid out of all job opportunities
+        The minimum salary paid out of all job opportunities
     """
-    pass
+
+
+def get_unique_industries(path):
+    """Get the minimum salary of all jobs
+
+    Must call `read`
+
+    Parameters
+    ----------
+    path : str
+        Must be passed to `read`
+
+    Returns
+    -------
+    int
+        The minimum salary paid out of all job opportunities
+    """
+
+
+def filter_by_industry(jobs, industry):
+    """Get the minimum salary of all jobs
+
+    Must call `read`
+
+    Parameters
+    ----------
+    path : str
+        Must be passed to `read`
+
+    Returns
+    -------
+    int
+        The minimum salary paid out of all job opportunities
+    """
+
+
+def get_max_salary(path):
+    """Get the minimum salary of all jobs
+
+    Must call `read`
+
+    Parameters
+    ----------
+    path : str
+        Must be passed to `read`
+
+    Returns
+    -------
+    int
+        The minimum salary paid out of all job opportunities
+    """
 
 
 def get_min_salary(path):
