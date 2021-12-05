@@ -12,6 +12,13 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
+    job = []
+
+    for v in jobs:
+        if job_type in v.values():
+            job.append(v)
+
+    return job
     """Filters a list of jobs by job_type
 
     Parameters
@@ -26,10 +33,17 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+   
 
 
 def get_unique_industries(path):
+    all_jobs = read(path)
+    all_industries = []
+    for types in all_jobs:
+        if types["industry"] != '':
+            all_industries.append(types["industry"])
+
+    return list(set(all_industries))
     """Checks all different industries and returns a list of them
 
     Must call `read`
@@ -44,10 +58,17 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    
 
 
 def filter_by_industry(jobs, industry):
+    job = []
+
+    for v in jobs:
+        if industry in v.values():
+            job.append(v)
+
+    return job
     """Filters a list of jobs by industry
 
     Parameters
@@ -62,17 +83,19 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    
 
 
 def get_max_salary(path):
-
     all_jobs = read(path)
-    all_types = []
+    salary = []
     for types in all_jobs:
-        all_types.append(types["job_type"])
+        if types["max_salary"] != '' and types["max_salary"].isnumeric():
+            i = int(types["max_salary"])
+            salary.append(i)
 
-    return list(set(all_types))
+    pass
+    return max(salary)
     """Get the maximum salary of all jobs
 
     Must call `read`
