@@ -20,5 +20,5 @@ JOBS = [
 
 
 def test_sort_by_criteria():
-    with pytest.raises(ValueError, match="invalid sorting criteria: tanajura"):
+    with pytest.raises(ValueError, match="invalid sorting criteria":[criteria]):
         sort_by(JOBS, 'tanajura')
