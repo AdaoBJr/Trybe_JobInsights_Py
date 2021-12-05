@@ -56,7 +56,7 @@ def get_unique_industries(path):
     -------
     list
         List of unique industries
-    """  
+    """
 
 
 def filter_by_industry(jobs, industry):
@@ -146,7 +146,6 @@ def matches_salary_range(job, salary):
         raise ValueError
 
     return job["min_salary"] <= salary <= job["max_salary"]
-    
     """Checks if a given salary is in the salary range of a given job
 
     Parameters
@@ -169,7 +168,7 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    
+
 
 def filter_by_salary_range(jobs, salary):
     match_jobs = []
