@@ -4,10 +4,10 @@ from src.jobs import read
 def get_unique_job_types(path):
     jobs_types = set()
     jobs_dict = read(path)
-    
+
     for job in jobs_dict:
         jobs_types.add(job["job_type"])
-    
+
     return list(jobs_types)
 
 
@@ -36,7 +36,7 @@ def get_unique_industries(path):
     for job in jobs_dict:
         if job["industry"] != "":
             job_industries.add(job["industry"])
-    
+
     return list(job_industries)
 
 
