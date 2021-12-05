@@ -73,7 +73,7 @@ def get_min_salary(path):
     read_path = read(path)
     salary_list = []
     for salary in read_path:
-        if salary["min_salary"] != '':
+        if salary["min_salary"].isnumeric():
             salary_list.append(int(salary["min_salary"]))
 
     lowest_salary = min(salary_list)
