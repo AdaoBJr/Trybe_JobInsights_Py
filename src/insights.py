@@ -1,4 +1,4 @@
-from jobs import read
+from src.jobs import read
 
 
 def get_unique_job_types(path):
@@ -43,6 +43,7 @@ def get_max_salary(path):
             if (int(job['max_salary']) > max_salary):
                 max_salary = int(job['max_salary'])
     return max_salary
+    pass
 
 
 def get_min_salary(path):
@@ -53,6 +54,7 @@ def get_min_salary(path):
             if (int(job['min_salary']) < min_salary):
                 min_salary = int(job['min_salary'])
     return min_salary
+    pass
 
 
 def matches_salary_range(job, salary):
