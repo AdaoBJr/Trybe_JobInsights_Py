@@ -3,10 +3,15 @@ from .jobs import read
 
 def get_unique_job_types(path):
     jobs_type = []
+    jobs_unique_types = []
     result_jobs = read(path)
     for jobs in result_jobs:
-        jobs_type.append(jobs["job_type"])
-    return jobs_type
+        if jobs["job_type"] != "":
+            jobs_type.append(jobs["job_type"])
+    for jobs_unique in jobs_type:
+        if jobs_unique not in jobs_unique_types:
+            jobs_unique_types.append(jobs_unique)
+    return jobs_unique_types
 
 
 def filter_by_job_type(jobs, job_type):
