@@ -9,24 +9,16 @@ def get_unique_job_types(path):
     return job_types
 
 
-def filter_by_job_type(jobs, job_type):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-
-
 def get_unique_industries(path):
+    jobs = read(path)
+    industries = set()
+    for job in jobs:
+        if job["industry"] != "":
+            industries.add(job["industry"])
+    return industries
+
+
+def filter_by_job_type(jobs, job_type):
     """Get the minimum salary of all jobs
 
     Must call `read`
