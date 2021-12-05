@@ -29,7 +29,10 @@ def get_max_salary(path):
 # https://acervolima.com/python-string-isnumeric-e-sua-aplicacao/
 # https://acervolima.com/python-funcao-max/
 
+def get_min_salary(path):
+    
 
+    
 def filter_by_job_type(jobs, job_type):
     """Get the minimum salary of all jobs
 
@@ -62,24 +65,6 @@ def filter_by_industry(jobs, industry):
     int
         The minimum salary paid out of all job opportunities
     """
-
-
-def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
 
 
 def matches_salary_range(job, salary):
