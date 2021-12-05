@@ -75,10 +75,6 @@ def matches_salary_range(job, salary):
     else:
         return False
 
-
-    raise ValueError(salary)
-
-
 def filter_by_salary_range(jobs, salary):
     """Filters a list of jobs by salary range
 
