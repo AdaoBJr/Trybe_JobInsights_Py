@@ -2,11 +2,12 @@ from src.jobs import read
 
 
 def get_unique_job_types(path):
-    readJobs = read(path)
-    jobs = set()
-    for job in readJobs:
-        jobs.add(job["job_type"])
-        return jobs
+    read_jobs = read(path)
+    return set(job["job_type"] for job in read_jobs)
+
+    # jobs = set()
+    # for job in read_jobs:
+    #   jobs.add(job["job_type"])
 
 
 def filter_by_job_type(jobs, job_type):
@@ -28,12 +29,12 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    readJobs = read(path)
-    jobs = set()
-    for job in readJobs:
-        if job['industry']:
-            jobs.add(job["industry"])
-            return jobs
+    read_jobs = read(path)
+    return set(job["industry"] for job in read_jobs if job["industry"] != '')
+    # jobs = set()
+    # for job in read_jobs:
+    #   if job['industry']:
+    #     jobs.add(job["industry"])
 
 
 def filter_by_industry(jobs, industry):
