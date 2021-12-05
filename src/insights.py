@@ -30,7 +30,7 @@ def filter_by_job_type(jobs, job_type):
 
 def get_unique_industries(path):
     read_jobs = read(path)
-    return set(job["industry"] for job in read_jobs if job["industry"] != '')
+    return set(job["industry"] for job in read_jobs if job["industry"])
     # jobs = set()
     # for job in read_jobs:
     #   if job['industry']:
@@ -56,6 +56,10 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
+    read_jobs = read(path)
+    list_max_salary = set(
+        job["max_salary"] for job in read_jobs if job["max_salary"].isdigit())
+    return max(int(salary) for salary in list_max_salary)
     """Get the maximum salary of all jobs
 
     Must call `read`
