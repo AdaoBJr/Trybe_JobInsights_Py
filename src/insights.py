@@ -43,20 +43,7 @@ def get_min_salary(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
+    
 
 
 def filter_by_industry(jobs, industry):
