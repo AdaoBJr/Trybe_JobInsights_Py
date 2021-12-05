@@ -29,10 +29,19 @@ def get_max_salary(path):
 # https://acervolima.com/python-string-isnumeric-e-sua-aplicacao/
 # https://acervolima.com/python-funcao-max/
 
-def get_min_salary(path):
-    
 
-    
+def get_min_salary(path):
+    jobs = read(path)
+    min_salary = [int(job["min_salary"])
+                  for job in jobs
+                  if job["min_salary"] != ""
+                  and job["min_salary"].isnumeric()]
+    return min(min_salary)
+# source func isNumeric() / min() ->
+# https://acervolima.com/python-string-isnumeric-e-sua-aplicacao/
+# https://acervolima.com/python-funcao-min/
+
+
 def filter_by_job_type(jobs, job_type):
     """Get the minimum salary of all jobs
 
