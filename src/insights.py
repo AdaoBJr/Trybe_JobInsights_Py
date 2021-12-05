@@ -22,7 +22,7 @@ def get_unique_industries(path):
     jobs_list = read(path)
     industries = []
     for job in jobs_list:
-        if not (job['industry'] in industries):
+        if not (job['industry'] in industries) and job['industry']:
             industries.append(job['industry'])
     return industries
 
@@ -39,22 +39,20 @@ def get_max_salary(path):
     jobs_list = read(path)
     max_salary = 0
     for job in jobs_list:
-        if job['max_salary']:
-            if (int(job['max_salary']) > max_salary):
-                max_salary = int(job['max_salary'])
+        if job['max_salary'].isdigit():
+            if (float(job['max_salary']) > max_salary):
+                max_salary = float(job['max_salary'])
     return max_salary
-    pass
 
 
 def get_min_salary(path):
     jobs_list = read(path)
     min_salary = 999999
     for job in jobs_list:
-        if job['min_salary']:
+        if job['min_salary'].isdigit():
             if (int(job['min_salary']) < min_salary):
                 min_salary = int(job['min_salary'])
     return min_salary
-    pass
 
 
 def matches_salary_range(job, salary):
