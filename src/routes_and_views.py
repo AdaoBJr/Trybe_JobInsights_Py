@@ -11,9 +11,16 @@ from .insights import (
     get_min_salary,
     get_max_salary,
 )
-from .more_insights import slice_jobs, get_int_from_args, build_jobs_urls
+from .more_insights import (
+    get_job,
+    slice_jobs,
+    get_int_from_args,
+    build_jobs_urls,
+)
 
 bp = Blueprint("client", __name__, template_folder="templates")
+
+PATH = "src/jobs.csv"
 
 
 @bp.route("/")
@@ -31,7 +38,7 @@ def list_jobs():
     industry = request.args.get("industry", None)
     job_type = request.args.get("job_type", None)
 
-    jobs = read(path="src/jobs.csv")
+    jobs = read(PATH)
     if industry:
         jobs = filter_by_industry(jobs, industry)
     if job_type:
@@ -45,18 +52,25 @@ def list_jobs():
 
     ctx = {
         "jobs": jobs,
-        "industries": sorted(get_unique_industries("src/jobs.csv")),
-        "job_types": sorted(get_unique_job_types("src/jobs.csv")),
+        "industries": sorted(get_unique_industries(PATH)),
+        "job_types": sorted(get_unique_job_types(PATH)),
         "previous_job_type": job_type,
         "previous_first": first_job,
         "previous_amount": amount,
         "previous_industry": industry,
         "previous_salary": salary,
-        "min_salary": get_min_salary("src/jobs.csv"),
-        "max_salary": get_max_salary("src/jobs.csv"),
+        "min_salary": get_min_salary(PATH),
+        "max_salary": get_max_salary(PATH),
     }
 
     return render_template("list_jobs.jinja2", ctx=ctx)
+
+
+@bp.route("/job/<index>")
+def job(index):
+    jobs = read(PATH)
+    job = get_job(jobs, index)
+    return render_template("job.jinja2", job=job)
 
 
 def init_app(app: Flask):
