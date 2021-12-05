@@ -43,7 +43,10 @@ def get_min_salary(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    
+    filter_jobs = [job
+                   for job in jobs
+                   if job["job_type"] == job_type]
+    return filter_jobs
 
 
 def filter_by_industry(jobs, industry):
