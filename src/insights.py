@@ -50,7 +50,10 @@ def filter_by_job_type(jobs, job_type):
 
 
 def filter_by_industry(jobs, industry):
-    
+    filter_industry = [job
+                       for job in jobs
+                       if job["industry"] == industry]
+    return filter_industry
 
 
 def matches_salary_range(job, salary):
