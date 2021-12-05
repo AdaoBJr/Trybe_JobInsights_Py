@@ -34,6 +34,7 @@ def filter_by_job_type(jobs, job_type):
         List of jobs with provided job_type
     """
 
+
 def get_unique_industries(path):
     all_jobs = read(path)
     all_industries = []
@@ -55,7 +56,8 @@ def get_unique_industries(path):
     -------
     list
         List of unique industries
-    """    
+    """  
+
 
 def filter_by_industry(jobs, industry):
     job = []
@@ -79,6 +81,7 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
+
 
 def get_max_salary(path):
     all_jobs = read(path)
@@ -105,6 +108,7 @@ def get_max_salary(path):
         The maximum salary paid out of all job opportunities
     """
 
+
 def get_min_salary(path):
     all_jobs = read(path)
     salary = []
@@ -129,6 +133,7 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
+
 
 def matches_salary_range(job, salary):
     if "min_salary" not in job or "max_salary" not in job:
@@ -164,6 +169,7 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
+    
 
 def filter_by_salary_range(jobs, salary):
     match_jobs = []
