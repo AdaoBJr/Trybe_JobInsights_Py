@@ -33,8 +33,6 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-   
-
 
 def get_unique_industries(path):
     all_jobs = read(path)
@@ -57,9 +55,7 @@ def get_unique_industries(path):
     -------
     list
         List of unique industries
-    """
-    
-
+    """    
 
 def filter_by_industry(jobs, industry):
     job = []
@@ -83,8 +79,6 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    
-
 
 def get_max_salary(path):
     all_jobs = read(path)
@@ -110,10 +104,17 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
-
 
 def get_min_salary(path):
+    all_jobs = read(path)
+    salary = []
+    for types in all_jobs:
+        if types["min_salary"] != '' and types["min_salary"].isnumeric():
+            i = int(types["min_salary"])
+            salary.append(i)
+
+    pass
+    return min(salary)
     """Get the minimum salary of all jobs
 
     Must call `read`
@@ -128,10 +129,18 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
-
 
 def matches_salary_range(job, salary):
+    if "min_salary" not in job or "max_salary" not in job:
+        raise ValueError
+    if type(job["min_salary"]) != int or type(job["max_salary"]) != int:
+        raise ValueError
+    if job["min_salary"] > job["max_salary"]:
+        raise ValueError
+    if type(salary) != int:
+        raise ValueError
+
+    return job["min_salary"] <= salary <= job["max_salary"]
     
     """Checks if a given salary is in the salary range of a given job
 
@@ -155,10 +164,18 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
-
 
 def filter_by_salary_range(jobs, salary):
+    match_jobs = []
+
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                match_jobs.append(job)
+        except ValueError:
+            ValueError
+
+    return match_jobs
     """Filters a list of jobs by salary range
 
     Parameters
@@ -173,4 +190,3 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
