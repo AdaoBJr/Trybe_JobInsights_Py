@@ -106,9 +106,6 @@ def get_max_salary(path):
     return max_salary
 
 
-print(get_max_salary("src/jobs.csv"))
-
-
 def get_min_salary(path):
     """Get the minimum salary of all jobs
 
@@ -124,7 +121,13 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    data = read(path)
+    min_salary = 1000000000
+    for cur in data:
+        if cur["min_salary"].isnumeric():
+            if int(cur["min_salary"]) < min_salary:
+                min_salary = int(cur["min_salary"])
+    return min_salary
 
 
 def matches_salary_range(job, salary):
