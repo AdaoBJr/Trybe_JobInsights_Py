@@ -23,9 +23,6 @@ def get_unique_job_types(path):
     return job_type
 
 
-print(get_unique_job_types("src/jobs.csv"))
-
-
 def filter_by_job_type(jobs, job_type):
     """Filters a list of jobs by job_type
 
@@ -59,7 +56,12 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    all_industries = read(path)
+    industries = set()
+
+    for cur in all_industries:
+        industries.add(cur["industry"])
+    return industries
 
 
 def filter_by_industry(jobs, industry):
