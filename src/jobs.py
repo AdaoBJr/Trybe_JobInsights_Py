@@ -17,7 +17,10 @@ def read(path):
         List of rows as dicts
     """
 
+    forList = []
     with open(path) as file:
-        date = csv.DictReader(file)
-        for cur in date:
-            return list(cur)
+        reader_jobs = csv.DictReader(file)
+
+        for cur in reader_jobs:
+            forList.append(cur)
+            return forList
