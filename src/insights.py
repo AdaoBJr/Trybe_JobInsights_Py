@@ -64,7 +64,8 @@ def get_unique_industries(path):
     industries = set()
 
     for cur in all_industries:
-        industries.add(cur["industry"])
+        if cur["industry"] != "":
+            industries.add(cur["industry"])
     return industries
 
 
