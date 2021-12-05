@@ -15,21 +15,11 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    filter_job_types = []
+    for job in jobs:
+        if job_type in job.values():
+            filter_job_types.append(job)
+    return filter_job_types
 
 
 def get_unique_industries(path):
