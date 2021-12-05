@@ -60,24 +60,14 @@ def get_max_salary(path):
     list_max_salary = set(
         job["max_salary"] for job in read_jobs if job["max_salary"].isdigit())
     return max(int(salary) for salary in list_max_salary)
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
 
 
 def get_min_salary(path):
+    read_jobs = read(path)
+    list_min_salary = set(
+        job["min_salary"] for job in read_jobs if job["min_salary"].isdigit())
+    return min(int(salary) for salary in list_min_salary)
+
     """Get the minimum salary of all jobs
 
     Must call `read`
