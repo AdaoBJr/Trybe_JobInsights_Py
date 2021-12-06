@@ -18,15 +18,18 @@ def get_unique_job_types(path):
     """
 
     num_jobs = {
-        "PART_TIME": {"jobs": 0},
-        "OTHER": {"jobs": 0},
-        "FULL_TIME": {"jobs": 0},
-        "CONTRACTOR": {"jobs": 0},
-        "TEMPORARY": {"jobs": 0},
-        "INTERN": {"jobs": 0},
+        # "PART_TIME": {"jobs": 0},
+        # "OTHER": {"jobs": 0},
+        # "FULL_TIME": {"jobs": 0},
+        # "CONTRACTOR": {"jobs": 0},
+        # "TEMPORARY": {"jobs": 0},
+        # "INTERN": {"jobs": 0},
     }
     for row in read(path):
-        num_jobs[row["job_type"]]["jobs"] += 1
+        if row["job_type"] not in num_jobs:
+            num_jobs[row["job_type"]] = {'jobs':0}
+        else:
+            num_jobs[row["job_type"]]["jobs"] += 1
 
     return num_jobs
 
