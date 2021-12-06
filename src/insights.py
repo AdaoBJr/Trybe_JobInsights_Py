@@ -24,6 +24,11 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
+    selected_job = []
+    for job in jobs:
+        if job["job_type"] == job_type:
+            selected_job.append(job)
+    return selected_job
     """Filters a list of jobs by job_type
 
     Parameters
