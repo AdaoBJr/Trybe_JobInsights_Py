@@ -70,11 +70,8 @@ def get_unique_industries(path):
     industries = set()
 
     for job in jobs:
-        if job["industry"] != '':
+        if job["industry"] != "":
             industries.add(job["industry"])
-
-    # industries.remove('')
-    print(industries)
 
     return list(industries)
 
@@ -112,7 +109,17 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    jobs = read(path)
+
+    salaries = set()
+
+    for job in jobs:
+        # Source: www.programiz.com/python-programming/methods/string/isnumeric
+        if job["max_salary"].isnumeric():
+            salaries.add(int(job["max_salary"]))
+
+    # Source: www.tutorialspoint.com/python/list_max.htm
+    return max(salaries)
 
 
 def get_min_salary(path):
