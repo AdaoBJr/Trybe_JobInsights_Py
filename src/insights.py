@@ -188,4 +188,14 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    # return [job for job in jobs if matches_salary_range(job, salary)]
+    filtered_jobs = []
+    for job in jobs:
+        try:
+            job_is_valid = matches_salary_range(job, salary)
+        except ValueError:
+            print("")
+        else:
+            if job_is_valid:
+                filtered_jobs.append(job)
+    return filtered_jobs
