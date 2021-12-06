@@ -1,4 +1,4 @@
-from jobs import read
+from .jobs import read
 
 
 def get_unique_job_types(path):
@@ -57,7 +57,12 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    job_data = read(path)
+    unique_industries = []
+    for job in job_data:
+        if not job["industry"] in unique_industries and job["industry"] != "":
+            unique_industries.append(job["industry"])
+    return unique_industries
 
 
 def filter_by_industry(jobs, industry):
