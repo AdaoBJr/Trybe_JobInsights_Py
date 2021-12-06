@@ -97,7 +97,15 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    read_file = read(path)
+    salary = []
+    for work in read_file:
+        if work["max_salary"] != "":
+            try:
+                salary.append(int(work["max_salary"]))
+            except ValueError:
+                pass
+        return max(salary)
 
 
 def get_min_salary(path):
