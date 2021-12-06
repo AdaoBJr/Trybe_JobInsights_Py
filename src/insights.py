@@ -51,11 +51,14 @@ def get_max_salary(path):
 
 def get_min_salary(path):
     read_file = read(path)
-    salary = 0
+    salary = []
     for work in read_file:
-        if work["min_salary"].isnumeric() and int(work["min_salary"]) < salary:
-            salary = int(work["min_salary"])
-    return salary
+        if work["min_salary"] != "":
+            try:
+                salary.append(int(work["min_salary"]))
+            except ValueError:
+                pass
+    return min(salary)
 
 
 def matches_salary_range(job, salary):
