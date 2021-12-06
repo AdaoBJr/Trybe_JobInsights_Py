@@ -2,20 +2,6 @@ from src.jobs import read
 
 
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
     read_file = read(path)
     job_types = set()
     for job in read_file:
@@ -42,20 +28,6 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
     read_file = read(path)
     industries = set()
     for industry in read_file:
@@ -83,49 +55,29 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
+    # https://docs.python.org/3/library/stdtypes.html#str.isnumeric
     read_file = read(path)
-    salary = 0
-    for work in read_file:
-        if work["max_salary"].isnumeric() and int(work["max_salary"]) > salary:
-            salary = work["max_salary"]
-        return salary
+    max_salary = 0
+    for job in read_file:
+        if (
+            job["max_salary"].isnumeric()
+            and int(job["max_salary"]) > max_salary
+        ):
+            max_salary = int(job["max_salary"])
+    return max_salary
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
+    # Código do Projeto Alessandra Rezende
     read_file = read(path)
-    salary = 0
-    for work in read_file:
-        if work["min_salary"].isnumeric() and int(work["min_salary"]) < salary:
-            salary = work["min_salary"]
-    return salary
+    min_salary = []
+    for job in read_file:
+        if job["min_salary"] != "":
+            try:
+                min_salary.append(int(job["min_salary"]))
+            except ValueError:
+                pass
+    return min(min_salary)
 
 
 def matches_salary_range(job, salary):
