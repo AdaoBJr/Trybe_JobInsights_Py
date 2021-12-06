@@ -62,7 +62,9 @@ def get_unique_industries(path):
     """
     num_jobs_by_industry = {}
     for row in read(path):
-        if row["industry"] not in num_jobs_by_industry and len(row["industry"]):
+        if row["industry"] not in num_jobs_by_industry and len(
+            row["industry"]
+        ):
             num_jobs_by_industry[row["industry"]] = {"jobs": 0}
         elif len(row["industry"]):
             num_jobs_by_industry[row["industry"]]["jobs"] += 1
@@ -103,7 +105,18 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    max_salary = 0
+
+    for row in read(path):
+        if row["max_salary"] == "invalid":
+            pass
+        elif (
+            len(row["max_salary"]) > 0
+            and int(row["max_salary"], 10) > max_salary
+        ):
+            max_salary = int(row["max_salary"], 10)
+
+    return max_salary
 
 
 def get_min_salary(path):
@@ -166,6 +179,3 @@ def filter_by_salary_range(jobs, salary):
         Jobs whose salary range contains `salary`
     """
     return []
-
-
-# print(get_unique_industries('./jobs.csv'))
