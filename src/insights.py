@@ -4,7 +4,7 @@ from src.jobs import read
 def get_unique_job_types(path):
     # Usando a func read criada no jobs
     file = read(path)
-    # criando um array do zero
+    # criando um array de elementos unicos
     jobs = set()
     # percorrendo o array e add ao Jobs tds os "job_types"
     for item in file:
@@ -34,11 +34,12 @@ def filter_by_job_type(jobs, job_type):
 def get_unique_industries(path):
     # Usando a func read criada no jobs
     file = read(path)
-    # criando um array do zero
+    # criando um array de elementos unicos
     industries = set()
-    # percorrendo o array e add ao industries tds os "job_types"
+    # percorrendo o array e add ao industries tds os "indistry"
     for item in file:
-        industries.add(item["industry"])
+        if item["industry"] != "":
+            industries.add(item["industry"])
     # retornando industries
     return industries
     return []
