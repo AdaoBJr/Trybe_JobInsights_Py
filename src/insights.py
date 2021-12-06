@@ -163,8 +163,6 @@ def matches_salary_range(job, salary):
     except KeyError:
         raise ValueError
     else:
-        if min_salary is None or max_salary is None:
-            raise ValueError
         if not isinstance(min_salary, int) or not isinstance(max_salary, int):
             raise ValueError
         if job["min_salary"] > job["max_salary"] or not isinstance(
