@@ -34,7 +34,7 @@ jobs_mock = [
 ]
 
 jobs_by_date = [
-    jobs_mock[0], jobs_mock[1], jobs_mock[2], jobs_mock[3], jobs_mock[4]
+    jobs_mock[4], jobs_mock[3], jobs_mock[2], jobs_mock[1], jobs_mock[0]
 ]
 
 jobs_by_min_salary = [
@@ -42,7 +42,7 @@ jobs_by_min_salary = [
 ]
 
 jobs_by_max_salary = [
-    jobs_mock[0], jobs_mock[1], jobs_mock[2], jobs_mock[3], jobs_mock[4]
+    jobs_mock[4], jobs_mock[3], jobs_mock[2], jobs_mock[1], jobs_mock[0]
 ]
 
 criteria_date = "date_posted"
@@ -61,4 +61,4 @@ def test_sort_by_criteria():
 
     # test by max_salary
     sort_by(jobs_mock, criteria_max)
-    assert jobs_mock == jobs_by_min_salary
+    assert jobs_mock == jobs_by_max_salary
