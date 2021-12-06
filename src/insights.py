@@ -81,21 +81,19 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    # Usando a func read criada no jobs
+    file = read(path)
+    # criando variavel min salary com valor muito alto
+    min_salary = 9999999999999
+    # percorrendo o array e testando se o valor de
+    # item["min_salary"] é numerico e se é menor que que min_salary
+    for item in file:
+        if (
+            item["min_salary"].isnumeric()
+            and int(item["min_salary"]) < min_salary
+        ):
+            min_salary = int(item["min_salary"])
+    return min_salary
 
 
 def matches_salary_range(job, salary):
