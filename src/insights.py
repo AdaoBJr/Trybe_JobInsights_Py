@@ -101,7 +101,7 @@ def get_max_salary(path):
     salary = 0
     for work in read_file:
         if work["max_salary"].isnumeric() and int(work["max_salary"]) > salary:
-            salary = int(work["max_salary"])
+            salary = work["max_salary"]
         return salary
 
 
@@ -123,11 +123,8 @@ def get_min_salary(path):
     read_file = read(path)
     salary = 0
     for work in read_file:
-        if work["min_salary"].isnumeric() and work["min_salary"] < salary:
-            try:
-                salary = int(work["min_salary"])
-            except ValueError:
-                pass
+        if work["min_salary"].isnumeric() and int(work["min_salary"]) < salary:
+            salary = work["min_salary"]
     return salary
 
 
