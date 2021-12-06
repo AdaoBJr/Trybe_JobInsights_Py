@@ -40,7 +40,7 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    return [job for job in jobs if job["job_type"] == job_type]
 
 
 def get_unique_industries(path):
@@ -83,7 +83,7 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    return [job for job in jobs if job["industry"] == industry]
 
 
 def get_max_salary(path):
