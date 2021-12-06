@@ -5,7 +5,7 @@ def get_unique_job_types(path):
     # Usando a func read criada no jobs
     file = read(path)
     # criando um array do zero
-    jobs = []
+    jobs = set()
     # percorrendo o array e add ao Jobs tds os "job_types"
     for item in file:
         jobs.add(item["job_type"])
@@ -35,7 +35,7 @@ def get_unique_industries(path):
     # Usando a func read criada no jobs
     file = read(path)
     # criando um array do zero
-    industries = []
+    industries = set()
     # percorrendo o array e add ao industries tds os "job_types"
     for item in file:
         industries.add(item["industry"])
