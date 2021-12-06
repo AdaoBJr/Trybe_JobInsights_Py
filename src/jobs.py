@@ -13,6 +13,7 @@ def read(path):
     Returns
     -------
     list
+    
         List of rows as dicts
     """
     return []
