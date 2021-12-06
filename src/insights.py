@@ -98,7 +98,7 @@ def get_max_salary(path):
         The maximum salary paid out of all job opportunities
     """
     read_file = read(path)
-    salary = []
+    salary = [0]
     for work in read_file:
         if work["max_salary"] != "":
             try:
