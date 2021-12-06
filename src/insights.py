@@ -27,7 +27,7 @@ def get_unique_job_types(path):
     }
     for row in read(path):
         if row["job_type"] not in num_jobs:
-            num_jobs[row["job_type"]] = {'jobs':0}
+            num_jobs[row["job_type"]] = {'jobs': 0}
         else:
             num_jobs[row["job_type"]]["jobs"] += 1
 
