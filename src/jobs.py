@@ -5,10 +5,6 @@ import csv
 
 @lru_cache
 def read(path):
-    jobsList=[]
-    with open(path, 'r') as file:
-        jobs = csv.DictReader(file)
-        jobsList = list(jobs)
     """Reads a file from a given path and returns its contents
     Parameters
     ----------
@@ -20,4 +16,10 @@ def read(path):
     list
         List of rows as dicts
     """
+
+    jobsList = []
+    with open(path, "r") as file:
+        jobs = csv.DictReader(file)
+        jobsList = list(jobs)
+
     return jobsList
