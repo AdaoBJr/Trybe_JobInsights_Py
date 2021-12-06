@@ -18,5 +18,4 @@ def read(path):
     """
     with open(path) as file:
         file_data = csv.DictReader(file)
-        print(file_data)
         return [row for row in file_data]
