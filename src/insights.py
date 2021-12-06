@@ -72,7 +72,7 @@ def get_min_salary(path):
     for work in read_file:
         if (
             work["min_salary"].isnumeric()
-            and int(work["max_salary"]) > salary
+            and int(work["min_salary"]) > salary
         ):
             salary = int(work["min_salary"])
     return salary
