@@ -17,17 +17,10 @@ def get_unique_job_types(path):
         List of unique job types
     """
 
-    num_jobs = {
-        # "PART_TIME": {"jobs": 0},
-        # "OTHER": {"jobs": 0},
-        # "FULL_TIME": {"jobs": 0},
-        # "CONTRACTOR": {"jobs": 0},
-        # "TEMPORARY": {"jobs": 0},
-        # "INTERN": {"jobs": 0},
-    }
+    num_jobs = {}
     for row in read(path):
         if row["job_type"] not in num_jobs:
-            num_jobs[row["job_type"]] = {'jobs': 0}
+            num_jobs[row["job_type"]] = {"jobs": 0}
         else:
             num_jobs[row["job_type"]]["jobs"] += 1
 
@@ -67,7 +60,14 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    num_jobs_by_industry = {}
+    for row in read(path):
+        if row["industry"] not in num_jobs_by_industry and len(row["industry"]):
+            num_jobs_by_industry[row["industry"]] = {"jobs": 0}
+        elif len(row["industry"]):
+            num_jobs_by_industry[row["industry"]]["jobs"] += 1
+
+    return num_jobs_by_industry
 
 
 def filter_by_industry(jobs, industry):
@@ -166,3 +166,6 @@ def filter_by_salary_range(jobs, salary):
         Jobs whose salary range contains `salary`
     """
     return []
+
+
+# print(get_unique_industries('./jobs.csv'))
