@@ -105,7 +105,7 @@ def get_max_salary(path):
             and int(work["max_salary"]) > salary
         ):
             salary = int(work["max_salary"])
-        return max(salary[0])
+        return max(salary)
 
 
 def get_min_salary(path):
