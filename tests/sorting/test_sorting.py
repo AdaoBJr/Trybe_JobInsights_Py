@@ -77,6 +77,9 @@ expected_results = [
 ]
 
 
+# commit vazio
+
+
 @fixture
 def test_sort_by_criteria():
     with pytest.raises(ValueError):
