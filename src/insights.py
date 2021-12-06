@@ -55,29 +55,27 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    # https://docs.python.org/3/library/stdtypes.html#str.isnumeric
     read_file = read(path)
-    max_salary = 0
-    for job in read_file:
+    salary = 0
+    for work in read_file:
         if (
-            job["max_salary"].isnumeric()
-            and int(job["max_salary"]) > max_salary
+            work["max_salary"].isnumeric()
+            and int(work["max_salary"]) > salary
         ):
-            max_salary = int(job["max_salary"])
-    return max_salary
+            salary = int(work["max_salary"])
+    return salary
 
 
 def get_min_salary(path):
-    # Código do Projeto Alessandra Rezende
     read_file = read(path)
-    min_salary = []
-    for job in read_file:
-        if job["min_salary"] != "":
-            try:
-                min_salary.append(int(job["min_salary"]))
-            except ValueError:
-                pass
-    return min(min_salary)
+    salary = 0
+    for work in read_file:
+        if (
+            work["min_salary"].isnumeric()
+            and int(work["max_salary"]) > salary
+        ):
+            salary = int(work["min_salary"])
+    return salary
 
 
 def matches_salary_range(job, salary):
