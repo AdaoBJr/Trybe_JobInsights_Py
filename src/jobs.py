@@ -25,9 +25,9 @@ def read(path):
         content = csv.reader(file, delimiter=",", quotechar='"')
         header, *data = content
 
-    jobsList = []
+    jobs_list = []
     for row in data:
-        jobsDict = {}
+        jobs_dict = {}
         # Source: https://www.educative.io/edpresso/how-to-get-th
         # e-length-of-a-list-in-python?utm_term=&utm_campaign=%5B
         # Test%5D+Dynamic+Verticals&utm_source=adwords&utm_medium
@@ -40,10 +40,10 @@ def read(path):
         # 5846af26ec27/tipos-de-dados-embutidos/bea4b2ef-aece-43f
         # e-9d9d-fa7d8c183088?use_case=side_bar
         for index in range(0, len(row)):
-            jobsDict[header[index]] = row[index]
-        jobsList.append(jobsDict)
+            jobs_dict[header[index]] = row[index]
+        jobs_list.append(jobs_dict)
 
-    return jobsList
+    return jobs_list
 
 
 if __name__ == "__main__":
