@@ -134,7 +134,18 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    min_salary = 999999999999999
+
+    for row in read(path):
+        if row["min_salary"] == "invalid":
+            pass
+        elif (
+            len(row["min_salary"]) > 0
+            and int(row["min_salary"], 10) < min_salary
+        ):
+            min_salary = int(row["min_salary"], 10)
+
+    return min_salary
 
 
 def matches_salary_range(job, salary):
