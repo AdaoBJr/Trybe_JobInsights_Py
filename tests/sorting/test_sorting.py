@@ -1,4 +1,5 @@
 from src.sorting import sort_by
+import pytest
 
 
 def test_sort_by_criteria():
@@ -82,3 +83,10 @@ def test_sort_by_criteria():
     ]
     sort_by(jobs, criteria)
     assert jobs == expectResult
+
+    criteria = "teste"
+
+    with pytest.raises(
+        ValueError, match=f"invalid sorting criteria: {criteria}"
+    ):
+        sort_by(jobs, criteria)
