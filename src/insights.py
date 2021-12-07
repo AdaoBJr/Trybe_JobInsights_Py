@@ -3,7 +3,10 @@ from src.jobs import read
 
 def get_unique_job_types(path):
     lista = read(path)
-    unique_list = [item["job_type"] for item in lista if item["job_type"]]
+    unique_list = []
+    for item in lista:
+        if item["job_type"] not in unique_list:
+            unique_list.append(item["job_type"])
 
     return unique_list
 
@@ -42,9 +45,13 @@ def get_unique_industries(path):
         List of unique industries
     """
     lista = read(path)
-    industry_list = [item["industry"] for item in lista if item["industry"]]
+    unique_list = []
+    for item in lista:
+        i = item["industry"]
+        if i not in unique_list and i is not "":
+            unique_list.append(i)
 
-    return industry_list
+    return unique_list
 
 
 def filter_by_industry(jobs, industry):
@@ -107,7 +114,7 @@ def get_min_salary(path):
     """
     lista = read(path)
     list_filtered = [item for item in lista if item["max_salary"]]
-    minimum_salary = get_max_salary('src/jobs.csv')
+    minimum_salary = get_max_salary("src/jobs.csv")
     for item in list_filtered:
         if int(item["max_salary"]) < int(minimum_salary):
             minimum_salary = item["max_salary"]
