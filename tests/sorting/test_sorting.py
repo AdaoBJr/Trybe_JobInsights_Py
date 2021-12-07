@@ -1,7 +1,8 @@
 from src.sorting import sort_by
 import pytest
 
-# recebi a ajuda do Eder Paixa e Lara Capila para a resolução dos requisito 8, 9 e 10
+# recebi a ajuda do Eder Paixa e Lara Capila
+# para a resolução dos requisito 8, 9 e 10
 
 jobs = [
     {"min_salary": 2500, "max_salary": 3500, "date_posted": "2021-12-01"},
