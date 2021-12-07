@@ -24,6 +24,7 @@ sorted_by_date = [
     {"min_salary": 3000, "max_salary": 1000, "date_posted": "2022-02-15"},
 ]
 
+
 def test_sort_by_criteria():
     assert sort_by(salary, 'min_salary') == sorted_by_min
     assert sort_by(salary, 'max_salary') == sorted_by_max
