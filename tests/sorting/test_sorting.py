@@ -33,4 +33,4 @@ def test_sort_by_criteria():
     assert result3[0] == mockJobs[2]
 
     with pytest.raises(ValueError):
-        sort_by(mockJobs, "testes")
+        sort_by(mockJobs, "teste")
