@@ -59,7 +59,6 @@ jobs = [
     },
 ]
 
-
 def test_sort_by_criteria():
     sort_by(jobs, "date_posted")
     assert jobs == [jobs[3], jobs[1], jobs[0], jobs[2]]
