@@ -23,9 +23,7 @@ def filter_by_job_type(jobs, job_type):
     for job in jobs:
         if job['job_type'] == job_type:
             job_types_list.append(job)
-    
     return job_types_list
-
 
 
 def get_unique_industries(path):
@@ -40,7 +38,6 @@ def get_unique_industries(path):
         if industry != '':
             industry_types_list.append(industry)
 
-
     return industry_types_list
 
 
@@ -50,9 +47,7 @@ def filter_by_industry(jobs, industry):
     for job in jobs:
         if job['industry'] == industry:
             industry_list.append(job)
-    
     return industry_list
-
 
 
 def get_max_salary(path):
@@ -62,7 +57,6 @@ def get_max_salary(path):
     for job in jobs_list:
         if job['max_salary'].isnumeric():
             salaries.add(int(job['max_salary']))
-    
     return max(salaries)
 
 
@@ -74,30 +68,20 @@ def get_min_salary(path):
     for job in jobs_list:
         if job['min_salary'].isnumeric():
             salaries.add(int(job['min_salary']))
-    
     return min(salaries)
 
 
 def matches_salary_range(job, salary):
-    if 'min_salary' not in job.keys():
-        raise ValueError('min_salary does not exists')
+    if (
+        'min_salary' not in job.keys()
+        or 'max_salary' not in job.keys()
+        or type(job['min_salary']) != int
+        or type(job['max_salary']) != int
+        or type(salary) != int
+        or job['min_salary'] > job['max_salary']
+    ):
+        raise ValueError('invalid values')
 
-    elif 'max_salary' not in job.keys():
-        raise ValueError('max_salary does not exists')
-    
-    elif type(job['min_salary']) != int:
-        raise ValueError('min_salary must to be a int number')
-
-    elif type(job['max_salary']) != int:
-        raise ValueError('max_salary must to be a int number')
-
-    elif type(salary) != int:
-        raise ValueError('salary must to be a int number')
-
-    elif job['min_salary'] > job['max_salary']:
-        raise ValueError('job["min_salary"] is greater than job["max_salary"]')
-
-    
     return job['min_salary'] <= salary <= job['max_salary']
 
 
@@ -129,9 +113,8 @@ def filter_by_salary_range(jobs, salary):
             and int(job['max_salary']) >= salary
         ):
             result.append(job)
-        
-
     return result
+
 
 if __name__ == '__main__':
     jobs = read('src/jobs.csv')

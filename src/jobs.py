@@ -21,12 +21,10 @@ def read(path):
 
     with open(path) as file:
         jobs_reader = csv.DictReader(file, delimiter=",", quotechar='"')
-        
         for row in jobs_reader:
             jobs_dict_list.append(row)
-            
-
     return jobs_dict_list
+
 
 if __name__ == '__main__':
     teste = read('src/jobs.csv')
