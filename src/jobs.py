@@ -21,5 +21,5 @@ def read(path):
         list_rows = []
         for row in jobs_status_reader:
             list_rows.append(row)
-
+        print(list_rows[0])
         return list_rows
