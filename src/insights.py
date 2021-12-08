@@ -161,17 +161,53 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    try:
-        if (
-            type(job["min_salary"]) is int
-            and type(job["max_salary"]) is int
-            and type(salary) is int
-        ):
+    # if not job["min_salary"] or not job["max_salary"]:
+    #     raise ValueError('Invalid value')
+    # if (
+    #     type(job["min_salary"]) is not int
+    #     or type(job["max_salary"]) is not int
+    #     or type(salary) is not int
+    # ):
+    #     raise ValueError('Invalid value')
+    # if job["min_salary"] > job["max_salary"]:
+    #     raise ValueError('Invalid value')
+    # if job["min_salary"] <= salary and salary <= job["max_salary"]:
+    #     return True
+    # else:
+    #     return False
+    # if job["min_salary"] and job["max_salary"]:
+    #     if (
+    #         type(job["min_salary"]) is int
+    #         and type(job["max_salary"]) is int
+    #         and type(salary) is int
+    #     ):
+    #         if job["min_salary"] <= job["max_salary"]:
+    #         if job["min_salary"] <= salary and salary <= job["max_salary"]:
+    #                 return True
+    #             else:
+    #                 return False
+    # raise ValueError('Invalid value')
+    # try:
+    #     if (
+    #         type(job["min_salary"]) is int
+    #         and type(job["max_salary"]) is int
+    #         and type(salary) is int
+    #     ):
+    #         if job["min_salary"] <= salary and salary <= job["max_salary"]:
+    #             return True
+    #     return False
+    # except ValueError:
+    #     print("Oops!  That was no valid number.  Try again...")
+    min = job.get("min_salary")
+    max = job.get("max_salary")
+
+    if type(min) is int and type(max) is int and type(salary) is int:
+        if job["min_salary"] <= job["max_salary"]:
             if job["min_salary"] <= salary and salary <= job["max_salary"]:
                 return True
-        return False
-    except ValueError:
-        print("Oops!  That was no valid number.  Try again...")
+            else:
+                return False
+    raise ValueError("Invalid value")
 
 
 def filter_by_salary_range(jobs, salary):
@@ -189,4 +225,13 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return [job for job in jobs if matches_salary_range(job, salary)]
+    # return [job for job in jobs if matches_salary_range(job, salary)]
+    jobs_by_salary = []
+
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                jobs_by_salary.append(job)
+        except ValueError:
+            continue
+    return jobs_by_salary
