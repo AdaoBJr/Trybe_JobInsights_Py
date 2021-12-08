@@ -27,39 +27,24 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    read_jobs = read(path)
+    types = set()
+    for salary in read_jobs:
+        # https://www.w3schools.com/python/ref_string_isnumeric.asp
+        if salary["max_salary"].isnumeric():
+            types.add(int(salary["max_salary"]))
+    # https://www.w3schools.com/python/ref_func_max.asp
+    # https://www.w3schools.com/python/python_lists.asp
+    return max(list(types))
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    read_jobs = read(path)
+    types = set()
+    for salary in read_jobs:
+        if salary["min_salary"].isnumeric():
+            types.add(int(salary["min_salary"]))
+    return min(list(types))
 
 
 def matches_salary_range(job, salary):
