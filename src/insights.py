@@ -104,7 +104,15 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    job_csv = jobs.read(path)
+    max_salary = 0
+    for job in job_csv:
+        if (
+            job["max_salary"].isnumeric() and
+            int(job["max_salary"]) > max_salary
+        ):
+            max_salary = int(float(job["max_salary"]))
+    return max_salary
 
 
 def get_min_salary(path):
