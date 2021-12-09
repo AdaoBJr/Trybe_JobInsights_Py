@@ -2,6 +2,7 @@ from src.jobs import read
 
 # tentando de novo
 
+
 def get_column_unique(dict, name_column):
     return set(map(lambda job: job[name_column], dict))
 
