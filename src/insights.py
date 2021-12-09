@@ -31,7 +31,7 @@ def filter_by_industry(jobs, industry):
     filtered_industries = []
     for job in jobs:
         if job["industry"] == industry:
-            filtered_industries.append(job)
+            filtered_industries.append(job["industry"])
     return filtered_industries
 
 
