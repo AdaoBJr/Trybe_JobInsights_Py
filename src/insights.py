@@ -92,7 +92,10 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    data = read(path)
+    m = 'max_salary'
+    higher_salary = [int(item[m]) for item in data if item[m].isdigit()]
+    return max(higher_salary)
 
 
 def get_min_salary(path):
@@ -158,5 +161,5 @@ def filter_by_salary_range(jobs, salary):
 
 
 if __name__ == "__main__":
-    result = get_unique_industries('src/jobs.csv')
+    result = get_max_salary('src/jobs.csv')
     print(result)
