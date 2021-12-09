@@ -100,7 +100,14 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    try:
+        file_content = read(path)
+    except OSError:
+        print("An error has occurred, please try again.")
+    else:
+        max_salaries = return_unique_values(file_content, "max_salary", True)
+        max_salary = max(max_salaries)
+        return max_salary
 
 
 def get_min_salary(path):
@@ -165,8 +172,15 @@ def filter_by_salary_range(jobs, salary):
     return []
 
 
-def return_unique_values(data, columm):
-    list_columm = list([item[columm] for item in data])
+def return_unique_values(data, columm, must_be_numeric=False):
+    if (must_be_numeric):
+        list_columm = list([
+            int(item[columm]) for item in data
+            if item[columm].isnumeric()]
+        )
+    else:
+        list_columm = list([item[columm] for item in data])
+
     unique_values = list(set(list_columm))
     valid_values = list(filter(None, unique_values))
     return valid_values
