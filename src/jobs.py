@@ -1,8 +1,12 @@
 from functools import lru_cache
-# fisrt commit
+import csv
+
 
 @lru_cache
 def read(path):
+    with open(path, mode='r') as file:
+        data = csv.DictReader(file)
+        return [row for row in data]
     """Reads a file from a given path and returns its contents
 
     Parameters
@@ -15,4 +19,3 @@ def read(path):
     list
         List of rows as dicts
     """
-    return []
