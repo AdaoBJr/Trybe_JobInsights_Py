@@ -8,3 +8,5 @@ def test_sort_by_criteria():
             {"company": "Trybe"}
         ], "min_salary") is None
     )
+
+# Agradecimentos aos amigos Renan Braga, Felippe Correa e Rafael mathias

@@ -53,7 +53,7 @@ def get_min_salary(path):
     return min(min_salary)
 
 
-def matches_salary_range(job, salary):
+def matches_salary_range(job, salary):  # Agradecimento ao amigo Rafael Mathias
     if (
         "min_salary" not in job
         or "max_salary" not in job
@@ -69,7 +69,7 @@ def matches_salary_range(job, salary):
         return False
 
 
-def filter_by_salary_range(jobs, salary):
+def filter_by_salary_range(jobs, salary):  # Agradecimento ao Rafael Mathias
     filtered_salary_range = []
     for job in jobs:
         try:
