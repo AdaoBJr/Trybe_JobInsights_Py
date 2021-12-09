@@ -26,7 +26,7 @@ list_date = [
 
 
 def test_sort_by_criteria():
-    sort_by(list_jobs, "max-salary")
+    sort_by(list_jobs, "max_salary")
     assert list_jobs == list_salary_max
 
     sort_by(list_jobs, "min_salary")
