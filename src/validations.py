@@ -32,7 +32,7 @@ def valid_salary_is_an_integer(salary):
     return True
 
 
-# Lógicas de validação 
+# Lógicas de validação
 # if not('min_salary' in job.keys()):
 #     raise ValueError('min key not contain in jobs')
 
