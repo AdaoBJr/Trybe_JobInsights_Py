@@ -14,4 +14,4 @@ min_salary = [
 
 
 def test_sort_by_criteria():
-    assert sort_by(salary, "max_salary") is min_salary
+    assert sort_by(salary, "max_salary") == min_salary
