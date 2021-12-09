@@ -58,7 +58,13 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    try:
+        file_content = read(path)
+    except OSError:
+        print("An error has occurred, please try again.")
+    else:
+        unique_industries = return_unique_values(file_content, "industry")
+        return unique_industries
 
 
 def filter_by_industry(jobs, industry):
