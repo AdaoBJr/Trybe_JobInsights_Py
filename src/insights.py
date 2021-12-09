@@ -146,15 +146,28 @@ def matches_salary_range(job, salary):
     """
     min = 'min_salary'
     max = 'max_salary'
-    if not isinstance(salary, int):
-        raise ValueError
-    elif 'min_salary' not in job or 'max_salary' not in job:
+    invalid_keys = 'min_salary' not in job or 'max_salary' not in job
+    if not isinstance(salary, int) or invalid_keys:
         raise ValueError
     elif not str(job[min]).isdigit() or not str(job[max]).isdigit():
         raise ValueError
     elif job['min_salary'] > job['max_salary']:
         raise ValueError
-    elif int(job[min]) < 0 or int(job[max]) < 0:
+    elif int(job['min_salary']) <= int(salary) <= int(job['max_salary']):
+        return True
+    else:
+        return False
+
+
+def pq_a_trybe_faz_isso(job, salary):
+    min = 'min_salary'
+    max = 'max_salary'
+    invalid_keys = 'min_salary' not in job or 'max_salary' not in job
+    if not isinstance(salary, int) or invalid_keys:
+        return False
+    elif not str(job[min]).isdigit() or not str(job[max]).isdigit():
+        return False
+    elif job['min_salary'] > job['max_salary']:
         return False
     elif int(job['min_salary']) <= int(salary) <= int(job['max_salary']):
         return True
@@ -177,7 +190,8 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    mtch_jobs = [job for job in jobs if pq_a_trybe_faz_isso(job, salary)]
+    return mtch_jobs
 
 
 if __name__ == "__main__":
