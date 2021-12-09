@@ -78,4 +78,4 @@ def filter_by_salary_range(jobs, salary):
                 jobs_salary_range_list.append(job)
         except ValueError:
             pass
-        return jobs_salary_range_list
+    return jobs_salary_range_list
