@@ -3,7 +3,7 @@ from src.jobs import read
 
 def get_unique_job_types(path):
     result = read(path)
-    job_types = set([row["type"] for row in result])
+    job_types = set([row["job_type"] for row in result])
     return [job_type for job_type in job_types]
 
     """Checks all different job types and returns a list of them
@@ -61,7 +61,6 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
 
 
 def filter_by_industry(jobs, industry):
@@ -83,6 +82,12 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
+    result = read(path)
+    salaries = [int(row["max_salary"])
+                for row in result
+                if row["max_salary"].isdigit()]
+    return max(salaries)
+
     """Get the maximum salary of all jobs
 
     Must call `read`
@@ -101,6 +106,12 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
+    result = read(path)
+    salaries = [int(row["min_salary"])
+                for row in result
+                if row["min_salary"].isdigit()]
+    return min(salaries)
+
     """Get the minimum salary of all jobs
 
     Must call `read`
