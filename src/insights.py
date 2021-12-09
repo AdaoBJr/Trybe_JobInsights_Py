@@ -125,7 +125,14 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    try:
+        file_content = read(path)
+    except OSError:
+        print("An error has occurred, please try again.")
+    else:
+        min_salaries = return_unique_values(file_content, "min_salary", True)
+        min_salary = min(min_salaries)
+        return min_salary
 
 
 def matches_salary_range(job, salary):
