@@ -21,8 +21,7 @@ def get_unique_job_types(path):
     except OSError:
         print("An error has occurred, please try again.")
     else:
-        all_job_types = list([job["job_type"] for job in file_content])
-        unique_job_types = list(set(all_job_types))
+        unique_job_types = return_unique_values(file_content, "job_type")
         return unique_job_types
 
 
@@ -158,3 +157,10 @@ def filter_by_salary_range(jobs, salary):
         Jobs whose salary range contains `salary`
     """
     return []
+
+
+def return_unique_values(data, columm):
+    list_columm = list([item[columm] for item in data])
+    unique_values = list(set(list_columm))
+    valid_values = list(filter(None, unique_values))
+    return valid_values
