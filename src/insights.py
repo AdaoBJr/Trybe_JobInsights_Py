@@ -10,11 +10,11 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    filtered_jobs = list()
+    filtered_list = list()
     for job in jobs:
         if job["job_type"] == job_type:
-            filtered_jobs.append(job)
-    return filtered_jobs
+            filtered_list.append(job)
+    return filtered_list
 
 
 def get_unique_industries(path):
@@ -27,57 +27,29 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    industries_list = list()
+    for job in jobs:
+        if job["industry"] == industry:
+            industries_list.append(job)
+    return industries_list
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    max_salaries = set()
+    jobs_list = read(path)
+    for job in jobs_list:
+        if job["max_salary"].isnumeric():
+            max_salaries.add(int(job["max_salary"]))
+    return max(list(max_salaries))
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    min_salaries = list()
+    jobs_list = read(path)
+    for job in jobs_list:
+        if job["min_salary"].isnumeric():
+            min_salaries.append(int(job["min_salary"]))
+    return min(min_salaries)
 
 
 def matches_salary_range(job, salary):
@@ -107,18 +79,11 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
-
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    filtered_list = list()
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                filtered_list.append(job)
+        except ValueError:
+            pass
+    return filtered_list
