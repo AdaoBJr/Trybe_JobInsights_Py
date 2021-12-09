@@ -166,7 +166,10 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    validate_salaries(job, salary)
+    is_in_the_salary_range = job["min_salary"] <= salary <= job["max_salary"]
+
+    return is_in_the_salary_range
 
 
 def filter_by_salary_range(jobs, salary):
@@ -199,3 +202,17 @@ def return_unique_values(data, columm, must_be_numeric=False):
     unique_values = list(set(list_columm))
     valid_values = list(filter(None, unique_values))
     return valid_values
+
+
+def validate_salaries(job, salary):
+    min_salary = job.get('min_salary')
+    max_salary = job.get('max_salary')
+
+    if (
+        "min_salary" not in job
+        or "max_salary" not in job
+        or not isinstance(min_salary, int)
+        or not isinstance(max_salary, int)
+        or min_salary > max_salary
+    ):
+        raise ValueError
