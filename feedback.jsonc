@@ -1,12 +1,12 @@
 {
-    // Coloque seu nome para sabermos de quem foi o comentário =D (opcional)
-    "nome": "",
-    // Dê uma nota ao projeto *^* (int de 0 a 10) (obrigatório)
-    "nota": ,
-    // O que você mais gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_positivos": "",
-    // O que você menos gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_negativos": "",
-    // Comentário livre sobre o que você achou do projeto (opcional)
-    "comentário": ""
+  // Coloque seu nome para sabermos de quem foi o comentário =D (opcional)
+  "nome": "Luiz Fernando de Oliveira Rodrigues",
+  // Dê uma nota ao projeto *^* (int de 0 a 10) (obrigatório)
+  "nota": 9,
+  // O que você mais gostou no projeto? (obrigatório, mas pode colocar "não há")
+  "pontos_positivos": "O projeto abordou praticamente todos os conteúdos do course, e como primeiro contato com python, foi muito desafiador.",
+  // O que você menos gostou no projeto? (obrigatório, mas pode colocar "não há")
+  "pontos_negativos": "Não há",
+  // Comentário livre sobre o que você achou do projeto (opcional)
+  "comentário": "Eu demorei bastante tempo para entender como funciona o front-end neste projeto. Seria interessante pelo menos uma leve explicação antes do projeto começar."
 }
