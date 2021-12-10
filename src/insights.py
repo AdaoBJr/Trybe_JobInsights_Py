@@ -164,7 +164,7 @@ def matches_salary_range(job, salary):
 #         1000
 #     ))
 
-
+# Cristian
 def filter_by_salary_range(jobs, salary):
     results = []
     for job in jobs:
