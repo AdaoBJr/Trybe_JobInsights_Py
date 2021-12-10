@@ -15,4 +15,6 @@ def read(path):
     list
         List of rows as dicts
     """
+    file = open(path)
+    print(file)
     return []
