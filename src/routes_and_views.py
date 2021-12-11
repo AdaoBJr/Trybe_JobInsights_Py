@@ -14,9 +14,9 @@ from .insights import (
 
 
 from .more_insights import (
-    slice_jobs, 
-    get_int_from_args, 
-    build_jobs_urls, 
+    slice_jobs,
+    get_int_from_args,
+    build_jobs_urls,
     get_job
 )
 

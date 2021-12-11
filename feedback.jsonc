@@ -1,12 +1,12 @@
 {
     // Coloque seu nome para sabermos de quem foi o comentário =D (opcional)
-    "nome": "",
+    "nome": "Letícia Galvão",
     // Dê uma nota ao projeto *^* (int de 0 a 10) (obrigatório)
-    "nota": ,
+    "nota": 8,
     // O que você mais gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_positivos": "",
+    "pontos_positivos": "Gostei de praticar os conceitos vistos nesse módulo",
     // O que você menos gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_negativos": "",
+    "pontos_negativos": "Não consegui entender o erro que tive na última parte do Requisito 11, e demorei a assimilar o que eu precisava fazer no req de teste.",
     // Comentário livre sobre o que você achou do projeto (opcional)
-    "comentário": ""
+    "comentário": "Achei bacana ver a página html, espero ver mais sobre flask"
 }
