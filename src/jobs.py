@@ -4,9 +4,8 @@ import csv
 
 @lru_cache
 def read(path):
-    result = []
     with open(path) as file:
-        content = csv.DictReader(file, delimiter=",", quotechar='"')
-        for val in content:
-            result.append(val)
-    return result
+        read_file = csv.DictReader(file)
+        header, *data = read_file
+
+    return [header, *data]
