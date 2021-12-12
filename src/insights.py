@@ -7,7 +7,6 @@ def get_unique_job_types(path):
     for job in jobs:
         if job["job_type"] != "":
             job_types.append(job["job_type"])
-    job_types = list(dict.fromkeys(job_types))
     return job_types
 
 
