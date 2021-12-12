@@ -15,7 +15,7 @@ def filter_by_job_type(jobs, job_type):
     type_jpobs = []
     for job in jobs:
         if job["job_type"] == job_type:
-            # A função retorna uma lista vazia para job_types ausentes nos jobs recebidos
+            # A função deve retornar uma lista com todos os empregos onde a coluna job_type corresponde ao parâmetro job_type
             type_jpobs.append(job)
     return type_jpobs
 
