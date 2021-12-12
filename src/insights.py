@@ -30,13 +30,13 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    read_jobs = read(path)
+    all_jobs = read(path)
     industry = []
-    for job_loop in read_jobs:
-        if(job_loop["industry"] != ""):
-            industry.append(job_loop["industry"])
-    industry = list[dict.fromkeys(industry)]
-    return industry
+    for job in all_jobs:
+        if job["industry"] != "":
+            industry.append(job["industry"])
+    list_industry = list(dict.fromkeys(industry))
+    return list_industry
 
 
 def filter_by_industry(jobs, industry):
