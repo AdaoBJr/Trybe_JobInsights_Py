@@ -75,8 +75,8 @@ def get_min_salary(path):
     salary = []
     for job in all_jobs:
         try:
-            if job["max_salary"] != "":
-                salary.append(int(job["max_salary"]))
+            if job["min_salary"] != "":
+                salary.append(int(job["min_salary"]))
         except ValueError:
             print("Error")
 # https://www.programiz.com/python-programming/methods/built-in/min
