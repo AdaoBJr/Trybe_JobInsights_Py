@@ -4,9 +4,9 @@ import csv
 
 @lru_cache
 def read(path):
-    result = []
     with open(path) as file:
-        content = csv.DictReader(file, delimiter=",", quotechar='"')
-        for val in content:
-            result.append(val)
-    return result
+        data_table = csv.DictReader(file, delimiter=",", quotechar='"')
+        jobs = []
+        for job in data_table:
+            jobs.append(job)
+        return jobs

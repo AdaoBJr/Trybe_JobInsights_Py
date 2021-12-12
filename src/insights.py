@@ -2,11 +2,13 @@ from src.jobs import read
 
 
 def get_unique_job_types(path):
-    paht_read = read(path)
-    jobs = []
-    for job in paht_read:
-        jobs.append(job["job_type"])
-    return jobs
+    jobs = read(path)
+    job_types = []
+    for job in jobs:
+        if job["job_type"] != "":
+            job_types.append(job["job_type"])
+    job_types = list(dict.fromkeys(job_types))
+    return job_types
 
 
 def filter_by_job_type(jobs, job_type):
