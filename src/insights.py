@@ -17,10 +17,10 @@ def get_unique_job_types(path):
         List of unique job types
     """
     job_list = jobs.read(path)
-    job_types = []
+    job_types = set()
     for job in job_list:
-        job_types.append(job["job_type"])
-    return set(job_types)
+        job_types.add(job["job_type"])
+    return list(job_types)
 
 
 def filter_by_job_type(jobs, job_type):
