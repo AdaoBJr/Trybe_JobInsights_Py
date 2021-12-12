@@ -66,7 +66,7 @@ def get_max_salary(path):
                 salary.append(int(job["max_salary"]))
         except ValueError:
             print("Error")
-            #https://www.programiz.com/python-programming/methods/built-in/max
+# https://www.programiz.com/python-programming/methods/built-in/max
     return max(salary)
 
 
