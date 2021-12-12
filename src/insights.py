@@ -61,10 +61,13 @@ def get_max_salary(path):
     all_jobs = read(path)
     salary = []
     for job in all_jobs:
-        if job["max_salary"] != "":
-            salary.append(int(job["max_salary"]))
-    max_salary = list(dict.fromkeys(salary))
-    return max_salary
+        try:
+            if job["max_salary"] != "":
+                salary.append(int(job["max_salary"]))
+        except ValueError:
+            print("Error")
+            #https://www.programiz.com/python-programming/methods/built-in/max
+    return max(salary)
 
 
 def get_min_salary(path):
