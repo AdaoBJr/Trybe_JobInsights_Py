@@ -12,21 +12,12 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    type_jpobs = []
+    for job in jobs:
+# A função retorna uma lista vazia para job_types ausentes nos jobs recebidos
+        if job["job_type"] == job_type:
+            type_jpobs.append(job)
+    return type_jpobs
 
 
 def get_unique_industries(path):
@@ -79,6 +70,7 @@ def get_min_salary(path):
                 salary.append(int(job["min_salary"]))
         except ValueError:
             print("Error")
+# https://www.datacamp.com/community/tutorials/exception-handling-python?utm_source=adwords_ppc&utm_medium=cpc&utm_campaignid=14989519638&utm_adgroupid=127836677279&utm_device=c&utm_keyword=&utm_matchtype=&utm_network=g&utm_adpostion=&utm_creative=278443377095&utm_targetid=aud-299261629574:dsa-429603003980&utm_loc_interest_ms=&utm_loc_physical_ms=1031867&gclid=Cj0KCQiA2NaNBhDvARIsAEw55hg6FdiW_v7WXQmWIuijDxQzfGbSKXRYv3Dd9KIcaMNiPQVzmBRlJYAaAi3rEALw_wcB
 # https://www.programiz.com/python-programming/methods/built-in/min
     return min(salary)
 
