@@ -35,13 +35,13 @@ def get_unique_industries(path):
 def filter_by_industry(jobs, industry):
     filter_industry = []
     for job in jobs:
+        # Loop in param jobs
         if job["industry"] == industry:
-        # A função deve retornar uma lista de dicionários
-        # com todos os empregos onde a coluna industry
-        # corresponde ao parâmetro industry.
+# A função deve retornar uma lista de dicionários
+# com todos os empregos onde a coluna industry
+# corresponde ao parâmetro industry.
             filter_industry.append(job)
     return filter_industry
-
 
 
 def get_max_salary(path):
