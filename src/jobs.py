@@ -10,4 +10,3 @@ def read(path):
         for val in content:
             result.append(val)
     return result
-    
