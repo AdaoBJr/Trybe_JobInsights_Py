@@ -14,8 +14,8 @@ def get_unique_job_types(path):
 def filter_by_job_type(jobs, job_type):
     type_jpobs = []
     for job in jobs:
-# A função retorna uma lista vazia para job_types ausentes nos jobs recebidos
         if job["job_type"] == job_type:
+            # A função retorna uma lista vazia para job_types ausentes nos jobs recebidos
             type_jpobs.append(job)
     return type_jpobs
 
