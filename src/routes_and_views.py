@@ -11,9 +11,21 @@ from .insights import (
     get_min_salary,
     get_max_salary,
 )
-from .more_insights import slice_jobs, get_int_from_args, build_jobs_urls
+from .more_insights import (
+    get_job,
+    slice_jobs,
+    get_int_from_args,
+    build_jobs_urls,
+)
 
 bp = Blueprint("client", __name__, template_folder="templates")
+
+
+@bp.route("/job/<index>")
+def job_page(index):
+    jobs = read(path="src/jobs.csv")
+    selected_job = get_job(jobs, index)
+    return render_template("job.jinja2", job=selected_job)
 
 
 @bp.route("/")
