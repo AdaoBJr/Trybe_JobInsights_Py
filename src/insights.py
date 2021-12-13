@@ -1,19 +1,13 @@
+from .jobs import read
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    job_types = set()
+    jobs_dict = read(path)
+    for type in jobs_dict:
+        job_types.add(type["job_type"])
+    return list(job_types)
 
 
 def filter_by_job_type(jobs, job_type):
@@ -35,21 +29,12 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    industries = set()
+    jobs_dict = read(path)
+    for type in jobs_dict:
+        if type["industry"] != "":
+            industries.add(type["industry"])
+    return list(industries)
 
 
 def filter_by_industry(jobs, industry):
@@ -71,39 +56,21 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    max_salaries = set()
+    jobs = read(path)
+    for job in jobs:
+        if job["max_salary"].isnumeric():
+            max_salaries.add(int(job["max_salary"]))
+    return max(list(max_salaries))
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    min_salaries = []
+    jobs = read(path)
+    for job in jobs:
+        if job["min_salary"].isnumeric():
+            min_salaries.append(int(job["min_salary"]))
+    return min(min_salaries)
 
 
 def matches_salary_range(job, salary):
