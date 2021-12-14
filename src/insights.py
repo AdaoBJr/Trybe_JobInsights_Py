@@ -105,6 +105,7 @@ def filter_by_salary_range(jobs, salary):
             print("Value error")
     return jobs
 
+
 """"
 def test_salary(jobs, salary):
     add_jobs = []
