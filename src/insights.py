@@ -83,7 +83,6 @@ def is_value_int(job, salary):
     if not isinstance(job["min_salary"], int):
         raise ValueError
 
-
 def matches_salary_range(job, salary):
     keys_exists(job)
     is_value_int(job, salary)
@@ -96,18 +95,23 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
-
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    jobs = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                jobs.append(job)
+        except ValueError:
+            print("Value error")
+    return jobs
+    
+""""
+def test_salary(jobs, salary):
+    add_jobs = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                add_jobs.append(job)
+        except ValueError:
+            print("Value error")
+    return add_jobs
+"""
