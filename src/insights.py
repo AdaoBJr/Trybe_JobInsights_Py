@@ -68,30 +68,31 @@ def get_min_salary(path):
     return min(salary)
 
 
+def keys_exists(job):
+    if "max_salary" not in job or "min_salary" not in job:
+        raise ValueError
+
+
+def is_value_int(job, salary):
+    # https://www.w3schools.com/python/ref_func_isinstance.asp
+    # https://www.datacamp.com/community/tutorials/exception-handling-python?utm_source=adwords_ppc&utm_medium=cpc&utm_campaignid=14989519638&utm_adgroupid=127836677279&utm_device=c&utm_keyword=&utm_matchtype=&utm_network=g&utm_adpostion=&utm_creative=278443377095&utm_targetid=aud-299261629574:dsa-429603003980&utm_loc_interest_ms=&utm_loc_physical_ms=1031867&gclid=CjwKCAiA-9uNBhBTEiwAN3IlNCnWbEMCEcYREjDx0Ap423JronJf2EQyXgYasZCqscwTlCa7XUI2sRoCsFAQAvD_BwE
+    if not isinstance(salary, int):
+        raise ValueError
+    if not isinstance(job["max_salary"], int):
+        raise ValueError
+    if not isinstance(job["min_salary"], int):
+        raise ValueError
+
+
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
-
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
-
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    keys_exists(job)
+    is_value_int(job, salary)
+    if job["min_salary"] > job["max_salary"]:
+        raise ValueError
+    elif salary <= job["max_salary"] and salary >= job["min_salary"]:
+        return True
+    else:
+        return False
 
 
 def filter_by_salary_range(jobs, salary):
