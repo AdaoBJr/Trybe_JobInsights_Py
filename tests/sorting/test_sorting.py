@@ -21,5 +21,6 @@ def min_salary():
 
 def test_sort_by_criteria(initial_min_salary):
     sort_by(initial_min_salary, "min_salary")
-    # test para compara se o salario vai ser igual o setado no initial_min salary
+    # test para compara se o salario vai
+    # ser igual o setado no initial_min salary
     assert min_salary() == initial_min_salary
