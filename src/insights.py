@@ -29,7 +29,7 @@ def get_unique_job_types(path):
     for job in list_job:
         if job["job_type"] != "":
             unique_job_types.add(job["job_type"])
-        return unique_job_types
+    return unique_job_types
 
 
 def filter_by_job_type(jobs, job_type):
@@ -61,7 +61,7 @@ def filter_by_job_type(jobs, job_type):
     for job in jobs:
         if job["job_type"] == job_type:
             list_job_type.append(job)
-        return list_job_type
+    return list_job_type
 
 
 def get_unique_industries(path):
