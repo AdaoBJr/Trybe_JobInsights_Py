@@ -48,7 +48,7 @@ def get_unique_industries(path):
     unique_list = []
     for item in lista:
         i = item["industry"]
-        if i not in unique_list and i is not "":
+        if i not in unique_list and i != "":
             unique_list.append(i)
 
     return unique_list
@@ -88,13 +88,16 @@ def get_max_salary(path):
         The maximum salary paid out of all job opportunities
     """
     lista = read(path)
-    list_filtered = [item for item in lista if item["max_salary"]]
-    maximum_salary = 1
-    for item in list_filtered:
-        if int(item["max_salary"]) > int(maximum_salary):
-            maximum_salary = item["max_salary"]
-
-    return maximum_salary
+    # set é um tipo de conjunto não ordenada e imutável. {'banana', 'maçã',...}
+    maximum_salary = set()
+    for item in lista:
+        # O mpetodo isnumeric() retorna True se todos os caracteres da string
+        # forem numéricos (0-9), caso contrário, False.
+        # link: https://www.w3schools.com/python/ref_string_isnumeric.asp
+        if item["max_salary"].isnumeric():
+            maximum_salary.add(int(item["max_salary"]))
+    # A funcção max() retorna o item com o valor mais alto em um iterável.
+    return max(maximum_salary)
 
 
 def get_min_salary(path):
@@ -113,13 +116,12 @@ def get_min_salary(path):
         The minimum salary paid out of all job opportunities
     """
     lista = read(path)
-    list_filtered = [item for item in lista if item["max_salary"]]
-    minimum_salary = get_max_salary("src/jobs.csv")
-    for item in list_filtered:
-        if int(item["max_salary"]) < int(minimum_salary):
-            minimum_salary = item["max_salary"]
-
-    return minimum_salary
+    minimum_salary = set()
+    for item in lista:
+        if item["min_salary"].isnumeric():
+            minimum_salary.add(int(item["min_salary"]))
+    # A funcção min() retorna o item com o valor mais baixo em um iterável.
+    return min(minimum_salary)
 
 
 def matches_salary_range(job, salary):
