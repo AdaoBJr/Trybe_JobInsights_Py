@@ -26,7 +26,10 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    list_filtered = [
+        job for job in jobs if job['job_type'] is job_type
+    ]
+    return list_filtered
 
 
 def get_unique_industries(path):
@@ -69,7 +72,10 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    list_filtered = [
+        ind for ind in jobs if ind['industry'] is industry
+    ]
+    return list_filtered
 
 
 def get_max_salary(path):
