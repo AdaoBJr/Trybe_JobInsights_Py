@@ -26,9 +26,7 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    list_filtered = [
-        job for job in jobs if job['job_type'] is job_type
-    ]
+    list_filtered = [job for job in jobs if job["job_type"] is job_type]
     return list_filtered
 
 
@@ -72,9 +70,7 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    list_filtered = [
-        ind for ind in jobs if ind['industry'] is industry
-    ]
+    list_filtered = [ind for ind in jobs if ind["industry"] is industry]
     return list_filtered
 
 
@@ -153,7 +149,22 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    if "min_salary" not in job or "max_salary" not in job:
+        raise ValueError("Invalid input")
+    elif type(salary) != int:
+        raise ValueError("Invalid input")
+    elif (
+        type(job["min_salary"]) != int
+        or type(job["max_salary"]) != int
+    ):
+        raise ValueError("Invalid input")
+    elif job["min_salary"] > job["max_salary"]:
+        raise ValueError("Invalid input")
+
+    if job['min_salary'] <= salary <= job['max_salary']:
+        return True
+    else:
+        return False
 
 
 def filter_by_salary_range(jobs, salary):
