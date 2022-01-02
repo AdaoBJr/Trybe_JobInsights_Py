@@ -153,15 +153,12 @@ def matches_salary_range(job, salary):
         raise ValueError("Invalid input")
     elif type(salary) != int:
         raise ValueError("Invalid input")
-    elif (
-        type(job["min_salary"]) != int
-        or type(job["max_salary"]) != int
-    ):
+    elif type(job["min_salary"]) != int or type(job["max_salary"]) != int:
         raise ValueError("Invalid input")
     elif job["min_salary"] > job["max_salary"]:
         raise ValueError("Invalid input")
 
-    if job['min_salary'] <= salary <= job['max_salary']:
+    if job["min_salary"] <= salary <= job["max_salary"]:
         return True
     else:
         return False
@@ -181,4 +178,20 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    my_jobs = []
+    for job in jobs:
+        if type(salary) == int:
+            if (
+                job["min_salary"] != ""
+                and job["max_salary"] != ""
+                and salary != ""
+            ):
+                if (
+                    type(job["min_salary"]) == int
+                    and type(job["max_salary"]) == int
+                ):
+                    if job["min_salary"] < job["max_salary"]:
+                        if job["min_salary"] <= salary <= job["max_salary"]:
+                            my_jobs.append(job)
+
+    return my_jobs
