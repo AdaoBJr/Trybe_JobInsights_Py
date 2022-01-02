@@ -28,5 +28,7 @@ list_desc_by_date = [
 
 def test_sort_by_criteria():
     assert sort_by(list_dicts, 'min_salary') == list_desc_by_min
+
     assert sort_by(list_dicts, 'max_salary') == list_desc_by_max
+
     assert sort_by(list_dicts, 'date_posted') == list_desc_by_date
