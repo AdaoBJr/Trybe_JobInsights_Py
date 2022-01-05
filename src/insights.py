@@ -43,9 +43,11 @@ def get_max_salary(path):
 
 def get_min_salary(path):
     csvJobs = read(path)
-    out = set()
-    for job in csvJobs:
-        out.add(job["min_salary"])
+    out = [
+        int(job["min_salary"])
+        for job in csvJobs
+        if job["min_salary"].isnumeric()
+    ]
     return min(out)
 
 
