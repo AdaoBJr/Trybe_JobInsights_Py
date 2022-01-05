@@ -33,12 +33,12 @@ def filter_by_industry(jobs, industry):
 
 def get_max_salary(path):
     csvJobs = read(path)
-    out = set()
-    for job in csvJobs:
-        out.add(job["max_salary"])
+    out = [
+        int(job["max_salary"])
+        for job in csvJobs
+        if job["max_salary"].isnumeric()
+    ]
     return max(out)
-
-    # pass
 
 
 def get_min_salary(path):
