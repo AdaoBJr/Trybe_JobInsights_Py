@@ -5,7 +5,7 @@ def get_unique_job_types(path):
     csvJobs = read(path)
     out = set()
     for job in csvJobs:
-        out.add(job['job_title'])
+        out.add(job["job_title"])
     return out
 
 
@@ -28,21 +28,12 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    csvJobs = read(path)
+    out = set()
+    for job in csvJobs:
+        out.add(job["industry"])
+    out.remove()
+    return out
 
 
 def filter_by_industry(jobs, industry):
@@ -64,39 +55,21 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    csvJobs = read(path)
+    out = set()
+    for job in csvJobs:
+        out.add(job["max_salary"])
+    return max(out)
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    # pass
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    csvJobs = read(path)
+    out = set()
+    for job in csvJobs:
+        out.add(job["min_salary"])
+    return min(out)
 
 
 def matches_salary_range(job, salary):
