@@ -12,7 +12,7 @@ def get_unique_job_types(path):
 def filter_by_job_type(jobs, job_type):
     out = []
     for job in jobs:
-        if(job['job_type'] == job_type):
+        if job["job_type"] == job_type:
             out.add(job)
     return out
 
@@ -27,10 +27,7 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    out = []
-    for job in jobs:
-        if(job['industry'] == industry):
-            out.add(job)
+    out = [job for job in jobs if (job["industry"] == industry)]
     return out
 
 
