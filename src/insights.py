@@ -10,10 +10,11 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    out = []
-    for job in jobs:
-        if job["job_type"] == job_type:
-            out.add(job)
+    out = [
+        job
+        for job in jobs
+        if job["job_type"] == job_type
+    ]
     return out
 
 
