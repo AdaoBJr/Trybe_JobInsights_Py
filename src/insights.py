@@ -2,11 +2,12 @@ from src.jobs import read
 
 
 def get_unique_job_types(path):
-    csvJobs = read(path)
-    out = set()
-    for job in csvJobs:
-        out.add(job["job_title"])
-    return out
+    jobs = read(path)
+    out = [
+        job['job_type']
+        for job in jobs
+    ]
+    return set(out)
 
 
 def filter_by_job_type(jobs, job_type):
