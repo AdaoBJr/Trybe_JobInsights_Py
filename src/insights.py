@@ -3,29 +3,19 @@ from src.jobs import read
 
 def get_unique_job_types(path):
     jobs = read(path)
-    out = [
-        job['job_type']
-        for job in jobs
-    ]
+    out = [job["job_type"] for job in jobs]
     return set(out)
 
 
 def filter_by_job_type(jobs, job_type):
-    out = [
-        job
-        for job in jobs
-        if job["job_type"] == job_type
-    ]
+    out = [job for job in jobs if job["job_type"] == job_type]
     return out
 
 
 def get_unique_industries(path):
-    csvJobs = read(path)
-    out = set()
-    for job in csvJobs:
-        out.add(job["industry"])
-    out.remove()
-    return out
+    jobs = read(path)
+    out = [job["industry"] for job in jobs if job["industry"] != ""]
+    return set(out)
 
 
 def filter_by_industry(jobs, industry):
