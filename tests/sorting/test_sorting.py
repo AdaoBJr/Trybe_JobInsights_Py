@@ -75,5 +75,7 @@ def test_sort_by_criteria():
     sort_by(job_list, "date_posted")
     assert job_list == sorted_max_salary_date_posted
 
-    with pytest.raises(ValueError, match="invalid sorting criteria: anything"):
+    with pytest.raises(
+        ValueError, match="ValueError: invalid sorting criteria: anything"
+    ):
         sort_by(job_list, "anything")
