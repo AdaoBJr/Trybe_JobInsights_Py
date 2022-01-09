@@ -11,6 +11,7 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
+    return [job for job in jobs if job["job_type"] == job_type]
     """Filters a list of jobs by job_type
 
     Parameters
@@ -67,22 +68,6 @@ def get_min_salary(path):
     list_min_salary = set(
         job["min_salary"] for job in read_jobs if job["min_salary"].isdigit())
     return min(int(salary) for salary in list_min_salary)
-
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
 
 
 def matches_salary_range(job, salary):
