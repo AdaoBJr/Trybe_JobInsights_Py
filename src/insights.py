@@ -61,14 +61,22 @@ def filter_by_industry(jobs, industry):
 def get_max_salary(path):
 
     job_list = read(path)
-    salaries = set()
-    for job in job_list:
-        if job["max_salary"] != "":
-            salaries.add(job["max_salary"])
+    # salaries = set()
     max_salary = 0
-    for salary in salaries:
-        if int(salary) > max_salary:
-            max_salary = int(salary)
+    for job in job_list:
+        try:
+            if job["max_salary"] != "" and int(job["max_salary"]) > max_salary:
+                max_salary = int(job["max_salary"])
+        except(ValueError):
+            print(ValueError)
+    #         print(ValueError)
+    # for salary in salaries:
+    #     try:
+    #         if int(salary) > max_salary:
+    #             max_salary = int(salary)
+    #     except(ValueError):
+    #         print(ValueError)
+
     return max_salary
 
 
