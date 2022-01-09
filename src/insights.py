@@ -69,33 +69,31 @@ def get_max_salary(path):
                 max_salary = int(job["max_salary"])
         except(ValueError):
             print(ValueError)
-    #         print(ValueError)
-    # for salary in salaries:
-    #     try:
-    #         if int(salary) > max_salary:
-    #             max_salary = int(salary)
-    #     except(ValueError):
-    #         print(ValueError)
 
     return max_salary
 
 
+def get_first_valid_salary(path):
+    job_list = read(path)
+    min_salary = 0
+    for job in job_list:
+        if job["min_salary"] != "":
+            min_salary = int(job["min_salary"])
+            break
+    return min_salary
+
+
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    job_list = read(path)
+    min_salary = get_first_valid_salary(path)
+    for job in job_list:
+        try:
+            if job["min_salary"] != "" and int(job["min_salary"]) < min_salary:
+                min_salary = int(job["min_salary"])
+        except(ValueError):
+            print(ValueError)
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    return min_salary
 
 
 def matches_salary_range(job, salary):
