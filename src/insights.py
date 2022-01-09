@@ -73,19 +73,21 @@ def get_max_salary(path):
     return max_salary
 
 
-def get_first_valid_salary(path):
-    job_list = read(path)
+def get_first_valid_salary(job_list):
     min_salary = 0
     for job in job_list:
-        if job["min_salary"] != "":
-            min_salary = int(job["min_salary"])
-            break
+        try:
+            if job["min_salary"] != "":
+                min_salary = int(job["min_salary"])
+                break
+        except(ValueError):
+            print(ValueError)
     return min_salary
 
 
 def get_min_salary(path):
     job_list = read(path)
-    min_salary = get_first_valid_salary(path)
+    min_salary = get_first_valid_salary(job_list)
     for job in job_list:
         try:
             if job["min_salary"] != "" and int(job["min_salary"]) < min_salary:
