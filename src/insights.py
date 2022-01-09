@@ -1,150 +1,80 @@
+from src.jobs import read
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    read_file = read(path)
+    unique_job_types = []
+    for row in read_file:
+        if row["job_type"] not in unique_job_types and row["job_type"] != "":
+            unique_job_types.append(row["job_type"])
+    return unique_job_types
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    job_type_filtered = []
+    for row in jobs:
+        if row["job_type"] == job_type:
+            job_type_filtered.append(row)
+    return job_type_filtered
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    read_file = read(path)
+    unique_industries = []
+    for row in read_file:
+        if row["industry"] not in unique_industries and row["industry"] != "":
+            unique_industries.append(row["industry"])
+    return unique_industries
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    industries_filtered = []
+    for row in jobs:
+        if row["industry"] == industry:
+            industries_filtered.append(row)
+    return industries_filtered
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    read_file = read(path)
+    max_salary = []
+    for row in read_file:
+        if row["max_salary"] != "" and row["max_salary"].isdigit():
+            max_salary.append(int(row["max_salary"]))
+    return max(max_salary)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    read_file = read(path)
+    min_salary = []
+    for row in read_file:
+        if row["min_salary"] != "" and row["min_salary"].isdigit():
+            min_salary.append(int(row["min_salary"]))
+    return min(min_salary)
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    if type(salary) is not int:
+        raise ValueError("Salary isn't a valid integer")
+    if not ("min_salary" in job and "max_salary" in job):
+        raise ValueError("min_salary or max_salary doesn't exists")
+    if (
+        type(job["min_salary"]) is not int
+        or type(job["max_salary"]) is not int
+    ):
+        raise ValueError("min_salary or max_salary aren't valid integers")
+    if job["min_salary"] > job["max_salary"]:
+        raise ValueError("min_salary is greather than max_salary")
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
-
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    return job["min_salary"] <= salary <= job["max_salary"]
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
+    salary_range = []
+    for row in jobs:
+        try:
+            if matches_salary_range(row, salary):
+                salary_range.append(row)
+        except ValueError:
+            pass
 
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    return salary_range
