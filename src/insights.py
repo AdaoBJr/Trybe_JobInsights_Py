@@ -34,10 +34,9 @@ def filter_by_industry(jobs, industry):
             filtered_industries.append(job)
     return filtered_industries
 
+
 # fonte isnumeric():
 # https://www.programiz.com/python-programming/methods/string/isnumeric
-
-
 def get_max_salary(path):
     jobs = src.jobs.read(path)
     max_salary = 0
@@ -50,13 +49,18 @@ def get_max_salary(path):
     return max_salary
 
 
+# fonte isnumeric():
+# https://www.programiz.com/python-programming/methods/string/isnumeric
 def get_min_salary(path):
     jobs = src.jobs.read(path)
-    min_salary = []
-    for job in jobs:
-        if job['min_salary'] != '' and job['min_salary'] != 'invalid':
-            min_salary.append(int(job['min_salary']))
-    return min(min_salary)
+    min_salary = 999999
+    for salary in jobs:
+        if (
+            salary['min_salary'].isnumeric()
+            and int(salary['min_salary']) < min_salary
+        ):
+            min_salary = int(salary['min_salary'])
+    return min_salary
 
 
 def matches_salary_range(job, salary):
