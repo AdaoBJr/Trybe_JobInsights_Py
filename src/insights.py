@@ -34,14 +34,14 @@ def filter_by_industry(jobs, industry):
             filtered_industries.append(job)
     return filtered_industries
 
-
+# fonte isnumeric() - https://www.programiz.com/python-programming/methods/string/isnumeric
 def get_max_salary(path):
     jobs = src.jobs.read(path)
-    max_salary = []
-    for job in jobs:
-        if job['max_salary'] != '' and job['max_salary'] != 'invalid':
-            max_salary.append(int(job['max_salary']))
-    return max(max_salary)
+    max_salary = 0
+    for salary in jobs:
+        if salary['max_salary'].isnumeric() and int(salary['max_salary']) > max_salary:
+            max_salary = int(salary['max_salary'])
+    return max_salary
 
 
 def get_min_salary(path):
