@@ -4,5 +4,5 @@ from csv import DictReader
 
 @lru_cache
 def read(path):
-  with open(path, mode="r") as jobs:
-    return list(DictReader(jobs))  # list() returns a list
+    with open(path, mode="r") as jobs:
+        return list(DictReader(jobs))  # list() returns a list
