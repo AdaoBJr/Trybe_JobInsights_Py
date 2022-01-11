@@ -6,7 +6,9 @@ def get_unique_job_types(path):
     for job in job_types:
       jobs.append(job["job_type"])
     
-    return set(jobs) 
+    return set([job["job_type"] for job in job_types]) 
+
+print(get_unique_job_types('./src/jobs.csv'))
 
 def filter_by_job_type(jobs, job_type):
     """Filters a list of jobs by job_type
