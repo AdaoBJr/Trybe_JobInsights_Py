@@ -1,12 +1,15 @@
 from src.jobs import read
 
+
 def get_unique_job_types(path):
     job_types = read(path)
 
     return set([job["job_type"] for job in job_types]) 
 
+
 def filter_by_job_type(jobs, job_type):
     return [job for job in jobs if job["job_type"] == job_type]
+
 
 def get_unique_industries(path):
     jobs_list = read(path)
@@ -60,5 +63,5 @@ def filter_by_salary_range(jobs, salary):
             if matches_salary_range(job, salary):
                 filter_list.append(job)
         except ValueError:
-            pass
+            pass  
     return filter_list
