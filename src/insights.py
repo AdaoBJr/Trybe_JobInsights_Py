@@ -169,7 +169,7 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
+    """Filters a list of jobs by salary range(GO)
     Parameters
     ----------
     jobs : list
