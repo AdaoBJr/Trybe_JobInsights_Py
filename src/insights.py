@@ -67,13 +67,12 @@ def matches_salary_range(job, salary):
     if (
         'min_salary' not in job
         or 'max_salary' not in job
-        or not isinstance(job['max_salary'], int)
-        or not isinstance(job['min_salary'], int)
+        or type(job['max_salary']) != int
+        or type(job['min_salary']) != int
         or job['max_salary'] < job['min_salary']
-        or not isinstance(salary, int)
+        or type(salary) != int
     ):
-
-        raise ValueError('Salary range not found')
+        raise ValueError
     if salary <= job['max_salary'] and salary >= job['min_salary']:
         return True
     else:
