@@ -1,31 +1,15 @@
-from jobs import read
+from src.jobs import read
 
 def get_unique_job_types(path):
     job_types = read(path)
-    jobs = []
-    for job in job_types:
-      jobs.append(job["job_type"])
-    
+
     return set([job["job_type"] for job in job_types]) 
 
-print(get_unique_job_types('./src/jobs.csv'))
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
+    jobs_list = read(path)
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    return set(industry["industry"] for industry in jobs_list)
 
 
 def get_unique_industries(path):
